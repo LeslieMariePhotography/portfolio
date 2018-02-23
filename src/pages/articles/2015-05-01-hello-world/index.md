@@ -8,7 +8,6 @@ categories:
   - Movable Type
 attachments:
   - "./Gutenberg.jpg"
-  - "./Printing-press.png"
 ---
 
 Johannes Gensfleisch zur Laden zum Gutenberg (c. `1398` – `1468`) was a German blacksmith, goldsmith, printer, and publisher who introduced printing to Europe.

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import get from 'lodash/get'
+
 import { siteMetadata } from '../../gatsby-config'
 
 import SiteNavi from '../components/SiteNavi'
@@ -12,8 +14,23 @@ import faCircle from '@fortawesome/fontawesome-free-regular/faCircle'
 
 class Home extends Component {
   render() {
+    const projectLinks = []
     const pathPrefix =
       process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
+    const projects = get(this, 'props.data.remark.projects')
+
+    projects.forEach((data, i) => {
+      const layout = get(data, 'project.frontmatter.layout')
+      const title = get(data, 'project.frontmatter.title')
+      if (layout === 'project') {
+        projectLinks.push(
+          <div className="col-4" key={i}>
+            <div className="text-center" key={i}>{title}</div>
+          </div>
+        )
+      }
+    })
+    console.log({projects})
 
     return (
       <div>
@@ -84,51 +101,7 @@ class Home extends Component {
           <div id="portfolio-grid" className="row justify-content-center">
             <div className="col-12">
               <div className="row">
-                <div className="col-4">
-                  <div className="portfolio-image">
-                    <div className="text-center">Fashion Shoot</div>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="portfolio-image">
-                    <div className="text-center">Fashion Shoot</div>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="portfolio-image">
-                    <div className="text-center">Fashion Shoot</div>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="portfolio-image">
-                    <div className="text-center">Fashion Shoot</div>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="portfolio-image">
-                    <div className="text-center">Fashion Shoot</div>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="portfolio-image">
-                    <div className="text-center">Fashion Shoot</div>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="portfolio-image">
-                    <div className="text-center">Fashion Shoot</div>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="portfolio-image">
-                    <div className="text-center">Fashion Shoot</div>
-                  </div>
-                </div>
-                <div className="col-4">
-                  <div className="portfolio-image">
-                    <div className="text-center">Fashion Shoot</div>
-                  </div>
-                </div>
+                {projectLinks}
               </div>
             </div>
           </div>
@@ -151,7 +124,7 @@ class Home extends Component {
                 <div className="row">
                   <div className="col-12 text-primary">
                     <svg height="100" width="100">
-                      <circle cx="50" cy="50" r="40" stroke="#48C0E5" stroke-width="2" fill="transparent" />
+                      <circle cx="50" cy="50" r="40" stroke="#48C0E5" strokeWidth="2" fill="transparent" />
                       <FontAwesomeIcon icon={faPhone} transform="shrink-10" />
                     </svg>
                   </div>
@@ -166,7 +139,7 @@ class Home extends Component {
                 <div className="row">
                   <div className="col-12 text-primary">
                     <svg height="100" width="100">
-                      <circle cx="50" cy="50" r="40" stroke="#48C0E5" stroke-width="2" fill="transparent" />
+                      <circle cx="50" cy="50" r="40" stroke="#48C0E5" strokeWidth="2" fill="transparent" />
                       <FontAwesomeIcon icon={faEnvelope} transform="shrink-10" />
                     </svg>
                   </div>
@@ -181,7 +154,7 @@ class Home extends Component {
                 <div className="row">
                   <div className="col-12 text-primary">
                     <svg height="100" width="100">
-                      <circle cx="50" cy="50" r="40" stroke="#48C0E5" stroke-width="2" fill="transparent" />
+                      <circle cx="50" cy="50" r="40" stroke="#48C0E5" strokeWidth="2" fill="transparent" />
                       <FontAwesomeIcon icon={faLocation} transform="shrink-10" />
                     </svg>
                   </div>
@@ -244,3 +217,36 @@ class Home extends Component {
 }
 
 export default Home
+
+export const projectQuery = graphql`
+  query ProjectQuery {
+    site {
+      siteMetadata {
+        title
+        description
+        url: siteUrl
+        author
+        twitter
+        adsense
+      }
+    }
+    remark: allMarkdownRemark {
+      projects: edges {
+        project: node {
+          id
+          html
+          frontmatter {
+            layout
+            title
+            path
+            categories
+            date(formatString: "YYYY/MM/DD")
+            attachments {
+              publicURL
+            }
+          }
+        }
+      }
+    }
+  }
+`

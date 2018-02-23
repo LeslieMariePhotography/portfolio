@@ -1,11 +1,13 @@
 ---
 title: Project 2
 date: "2015-05-06T23:46:37.121Z"
-layout: post
+layout: project
 path: "/project-2/"
 categories:
   - FrontEnd
 description: "Civil society; save lives pathway to a better life public-private partnerships solution, tackle, protect UNHCR social movement Jane Addams sustainable campaign respond equality."
+attachments:
+  - "./movable-type.jpg"
 ---
 
 Wow! I love blogging so much already.

@@ -1,10 +1,12 @@
 ---
-title: Markdown
+title: Project 3
 date: "2015-05-28T22:40:32.169Z"
-layout: post
+layout: project
 path: "/project-3/"
 categories:
   - Markdown
+attachments:
+   - "Printing-press.png"
 ---
 
 # An h1 header

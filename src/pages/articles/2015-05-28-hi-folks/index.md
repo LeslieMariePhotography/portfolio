@@ -5,6 +5,8 @@ layout: post
 path: "/hi-folks/"
 categories:
   - Markdown
+attachments:
+  - "./Printing-press.png"
 ---
 
 # An h1 header
