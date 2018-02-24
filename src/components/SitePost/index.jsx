@@ -45,14 +45,16 @@ class SitePost extends Component {
 
   render() {
     const { site, data, isIndex } = this.props
-    const title = get(data, 'frontmatter.title')
-    const path = get(data, 'frontmatter.path')
-    const date = get(data, 'frontmatter.date')
-    const html = get(data, 'html')
-    const description =
-      get(data, 'frontmatter.description') || this.description(html)
-    const cate =
-      get(data, 'frontmatter.category') || get(data, 'frontmatter.categories')
+    const id = get(data, 'id')
+    const title = get(data, 'title')
+    const path = `/blog/${id}`
+    const date = get(data, 'createdAt')
+    const html = get(
+      data,
+      'childContentfulLessonCopyCopyTextNode.childMarkdownRemark.html'
+    )
+    const description = this.description(html)
+    const cate = get(data, 'lesson.title')
     const isMore = isIndex && !!html.match('<!--more-->')
     const ad = isIndex ? (
       ''
@@ -63,7 +65,7 @@ class SitePost extends Component {
     return (
       <div className="container">
         <div className="articles col-md-12">
-          <div className="article-wrap" key={path}>
+          <div className="article-wrap" key={id}>
             <div className="page-header">
               <Link style={{ boxShadow: 'none' }} to={path}>
                 <h1>{title}</h1>

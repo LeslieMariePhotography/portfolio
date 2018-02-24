@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: 'Leslie Marie Photography',
-    description: 'Photography portfolio for Leslie Marie Photography using GatsbyJS.',
+    description:
+      'Photography portfolio for Leslie Marie Photography using GatsbyJS.',
     siteUrl: '',
     author: 'Rey Vera',
     twitter: '',
@@ -9,6 +10,14 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: 'rqwmpn6dp5kg',
+        accessToken:
+          'f386519baa67ee88e6aa7d710f0738fcdca9eabed94d24c210b1c712e2ba0bef',
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -72,7 +81,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-         fonts:[`Lato:100,300`, `Roberto Condensed`]
+        fonts: [`Lato:100,300`, `Roberto Condensed`],
       },
     },
     'gatsby-plugin-catch-links',

@@ -3,6 +3,7 @@ const Promise = require('bluebird')
 const path = require('path')
 const select = require('unist-util-select')
 const fs = require('fs-extra')
+const slash = require('slash')
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
@@ -14,12 +15,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       graphql(
         `
           {
-            allMarkdownRemark(limit: 1000) {
+            allContentfulLessonCopy(filter: { node_locale: { eq: "en-US" } }) {
+              totalCount
               edges {
                 node {
-                  frontmatter {
-                    path
-                  }
+                  id
                 }
               }
             }
@@ -32,12 +32,12 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         }
 
         // Create blog posts pages.
-        _.each(result.data.allMarkdownRemark.edges, edge => {
+        _.each(result.data.allContentfulLessonCopy.edges, edge => {
           createPage({
-            path: edge.node.frontmatter.path,
-            component: blogPost,
+            path: `/blog/${edge.node.id}`,
+            component: slash(blogPost),
             context: {
-              path: edge.node.frontmatter.path,
+              id: edge.node.id,
             },
           })
         })

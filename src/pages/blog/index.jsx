@@ -17,19 +17,19 @@ class BlogIndex extends Component {
     const posts = get(this, 'props.data.remark.posts')
 
     const sortedPosts = sortBy(posts, post =>
-      get(post, 'post.frontmatter.date')
+      get(post, 'post.createdAt')
     ).reverse()
 
     sortedPosts.forEach((data, i) => {
-      const layout = get(data, 'post.frontmatter.layout')
-      const path = get(data, 'post.path')
-      if (layout === 'post' && path !== '/404/') {
-        pageLinks.push(
-          <LazyLoad height={500} offset={500} once={true} key={i}>
-            <SitePost data={data.post} site={site} isIndex={true} key={i} />
-          </LazyLoad>
-        )
-      }
+      // const layout = get(data, 'post.frontmatter.layout')
+      // const path = get(data, 'post.path')
+      // if (layout === 'post' && path !== '/404/') {
+      pageLinks.push(
+        <LazyLoad height={500} offset={500} once={true} key={i}>
+          <SitePost data={data.post} site={site} isIndex={true} key={i} />
+        </LazyLoad>
+      )
+      // }
     })
 
     return (
@@ -70,16 +70,16 @@ export const pageQuery = graphql`
         adsense
       }
     }
-    remark: allMarkdownRemark {
+    remark: allContentfulLessonCopy(filter: { node_locale: { eq: "en-US" } }) {
       posts: edges {
         post: node {
-          html
-          frontmatter {
-            layout
-            title
-            path
-            categories
-            date(formatString: "YYYY/MM/DD")
+          id
+          title
+          createdAt(formatString: "YYYY/MM/DD")
+          childContentfulLessonCopyCopyTextNode {
+            childMarkdownRemark {
+              html
+            }
           }
         }
       }

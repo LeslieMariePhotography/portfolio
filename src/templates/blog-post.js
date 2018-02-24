@@ -53,7 +53,7 @@ class BlogPostTemplate extends Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
+  query BlogPostByPath($id: String!) {
     site {
       meta: siteMetadata {
         title
@@ -64,15 +64,12 @@ export const pageQuery = graphql`
         adsense
       }
     }
-    post: markdownRemark(frontmatter: { path: { eq: $path } }) {
-      id
-      html
-      frontmatter {
-        layout
-        title
-        path
-        categories
-        date(formatString: "YYYY/MM/DD")
+    post: contentfulLessonCopy(id: { eq: $id }) {
+      title
+      childContentfulLessonCopyCopyTextNode {
+        childMarkdownRemark {
+          html
+        }
       }
     }
   }

@@ -25,12 +25,14 @@ class Home extends Component {
       if (layout === 'project') {
         projectLinks.push(
           <div className="col-4" key={i}>
-            <div className="text-center" key={i}>{title}</div>
+            <div className="text-center" key={i}>
+              {title}
+            </div>
           </div>
         )
       }
     })
-    console.log({projects})
+    console.log({ projects })
 
     return (
       <div>
@@ -100,9 +102,7 @@ class Home extends Component {
           </div>
           <div id="portfolio-grid" className="row justify-content-center">
             <div className="col-12">
-              <div className="row">
-                {projectLinks}
-              </div>
+              <div className="row">{projectLinks}</div>
             </div>
           </div>
         </div>
@@ -124,7 +124,14 @@ class Home extends Component {
                 <div className="row">
                   <div className="col-12 text-primary">
                     <svg height="100" width="100">
-                      <circle cx="50" cy="50" r="40" stroke="#48C0E5" strokeWidth="2" fill="transparent" />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        stroke="#48C0E5"
+                        strokeWidth="2"
+                        fill="transparent"
+                      />
                       <FontAwesomeIcon icon={faPhone} transform="shrink-10" />
                     </svg>
                   </div>
@@ -135,12 +142,25 @@ class Home extends Component {
               </a>
             </div>
             <div className="col-md-3 col-7 text-center">
-              <a className="contact-link" href="mailto:leslievera2012@gmail.com">
+              <a
+                className="contact-link"
+                href="mailto:leslievera2012@gmail.com"
+              >
                 <div className="row">
                   <div className="col-12 text-primary">
                     <svg height="100" width="100">
-                      <circle cx="50" cy="50" r="40" stroke="#48C0E5" strokeWidth="2" fill="transparent" />
-                      <FontAwesomeIcon icon={faEnvelope} transform="shrink-10" />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        stroke="#48C0E5"
+                        strokeWidth="2"
+                        fill="transparent"
+                      />
+                      <FontAwesomeIcon
+                        icon={faEnvelope}
+                        transform="shrink-10"
+                      />
                     </svg>
                   </div>
                 </div>
@@ -154,8 +174,18 @@ class Home extends Component {
                 <div className="row">
                   <div className="col-12 text-primary">
                     <svg height="100" width="100">
-                      <circle cx="50" cy="50" r="40" stroke="#48C0E5" strokeWidth="2" fill="transparent" />
-                      <FontAwesomeIcon icon={faLocation} transform="shrink-10" />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        stroke="#48C0E5"
+                        strokeWidth="2"
+                        fill="transparent"
+                      />
+                      <FontAwesomeIcon
+                        icon={faLocation}
+                        transform="shrink-10"
+                      />
                     </svg>
                   </div>
                 </div>
@@ -176,18 +206,41 @@ class Home extends Component {
               <form>
                 <div className="form-row justify-content-center">
                   <div className="col-6 pb-3">
-                    <input type="text" className="form-control" id="inputFN" placeholder="First Name*" required/>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="inputFN"
+                      placeholder="First Name*"
+                      required
+                    />
                   </div>
                   <div className="col-6 pb-3">
-                    <input type="text" className="form-control" id="inputLN" placeholder="Last Name*" required/>
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="inputLN"
+                      placeholder="Last Name*"
+                      required
+                    />
                   </div>
                 </div>
                 <div className="form-row justify-content-center">
                   <div className="col-6 pb-3">
-                    <input type="email" className="form-control" id="inputEmail" placeholder="Email*" required/>
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="inputEmail"
+                      placeholder="Email*"
+                      required
+                    />
                   </div>
                   <div className="col-6 pb-3">
-                    <input type="tel" className="form-control" id="inputTel" placeholder="Phone"/>
+                    <input
+                      type="tel"
+                      className="form-control"
+                      id="inputTel"
+                      placeholder="Phone"
+                    />
                   </div>
                 </div>
                 <div className="form-row justify-content-center">
@@ -201,11 +254,18 @@ class Home extends Component {
                     </select>
                   </div>
                   <div className="col-6 pb-3">
-                    <input type="date" className="form-control" id="inputDate" placeholder="Event Date"/>
+                    <input
+                      type="date"
+                      className="form-control"
+                      id="inputDate"
+                      placeholder="Event Date"
+                    />
                   </div>
                 </div>
                 <div className="form-row justify-content-center">
-                  <button type="submit" className="btn btn-primary">Submit</button>
+                  <button type="submit" className="btn btn-primary">
+                    Submit
+                  </button>
                 </div>
               </form>
             </div>
@@ -241,9 +301,6 @@ export const projectQuery = graphql`
             path
             categories
             date(formatString: "YYYY/MM/DD")
-            attachments {
-              publicURL
-            }
           }
         }
       }
