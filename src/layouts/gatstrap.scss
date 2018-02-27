@@ -7,10 +7,11 @@
 // Color system
 //
 @import './colors.scss';
+@import './hovereffect.scss';
 
 // Reassign color vars to semantic color scheme
 $theme-colors: (
-    primary: #48C0E5,
+    primary: #48c0e5,
     secondary: $gray-600,
     success: $green,
     info: $cyan,
@@ -32,14 +33,15 @@ $theme-colors: (
 
 $spacer: 1rem !default;
 $spacers: (
-  0: 0,
-  1: ($spacer * .25),
-  2: ($spacer * .5),
-  3: $spacer,
-  4: ($spacer * 1.5),
-  5: ($spacer * 3),
-  6: ($spacer * 6),
-  ) !default;
+    0: 0,
+    1: ($spacer * 0.25),
+    2: ($spacer * 0.5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 3),
+    6: ($spacer * 6)
+  )
+  !default;
 
 // Options
 //
@@ -71,15 +73,14 @@ $inverse-color: $gray-600 !default;
 //
 // Style anchor elements.
 
-$link-color:                $black !default;
-$link-decoration:           none !default;
-$link-hover-color:          #48C0E5 !default;
-$link-hover-decoration:     none !default;
+$link-color: $black !default;
+$link-decoration: none !default;
+$link-hover-color: #48c0e5 !default;
+$link-hover-decoration: none !default;
 
 // Fonts
 //
 @import './fonts.scss';
-
 
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 
@@ -104,7 +105,7 @@ img {
 }
 
 // img:hover {
-  // animation: pulse 0.5s;
+// animation: pulse 0.5s;
 // }
 
 .navbar-brand {
@@ -124,13 +125,10 @@ img {
 
 /* HEADER */
 #home-header {
-  background: linear-gradient(0deg,rgba(0,0,0,0.9),rgba(0,0,0,0)), url('/img/self-portrait.jpg');
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)),
+    url('/img/self-portrait.jpg');
   background-color: #000000;
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: -4em;
-}
-
-/* CONTACT */
-#home-contact {
 }

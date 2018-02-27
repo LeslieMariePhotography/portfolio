@@ -10,12 +10,13 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
   return new Promise((resolve, reject) => {
     const pages = []
-    const blogPost = path.resolve('./src/templates/blog-post.js')
+    const portfolio = path.resolve('./src/templates/portfolio.js')
+
     resolve(
       graphql(
         `
           {
-            allContentfulLessonCopy(filter: { node_locale: { eq: "en-US" } }) {
+            allContentfulPhotoGallery {
               totalCount
               edges {
                 node {
@@ -31,11 +32,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           reject(result.errors)
         }
 
-        // Create blog posts pages.
-        _.each(result.data.allContentfulLessonCopy.edges, edge => {
+        // Create portfolio pages
+        _.each(result.data.allContentfulPhotoGallery.edges, edge => {
           createPage({
-            path: `/blog/${edge.node.id}`,
-            component: slash(blogPost),
+            path: `/portfolio/${edge.node.id}`,
+            component: slash(portfolio),
             context: {
               id: edge.node.id,
             },

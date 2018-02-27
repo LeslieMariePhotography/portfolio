@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import get from 'lodash/get'
+import Helmet from 'react-helmet'
 
 import { siteMetadata } from '../../gatsby-config'
 
@@ -17,25 +18,33 @@ class Home extends Component {
     const projectLinks = []
     const pathPrefix =
       process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
-    const projects = get(this, 'props.data.remark.projects')
+    const projects = get(this, 'props.data.portfolio.projects')
 
     projects.forEach((data, i) => {
-      const layout = get(data, 'project.frontmatter.layout')
-      const title = get(data, 'project.frontmatter.title')
-      if (layout === 'project') {
-        projectLinks.push(
-          <div className="col-4" key={i}>
-            <div className="text-center" key={i}>
-              {title}
-            </div>
+      const title = get(data, 'project.title.title')
+      const image = get(data, 'project.coverImage.file.url')
+      const path = get(data, 'project.id')
+
+      projectLinks.push(
+        <div className="col-4 pt-5" key={i}>
+          <div
+            className="text-center hovereffect"
+            style={{ backgroundImage: `url(https:${image})` }}
+            key={i}
+          >
+            <a href={`/portfolio/${path}`}>
+              <div className="overlay">
+                <h2>{title}</h2>
+              </div>
+            </a>
           </div>
-        )
-      }
+        </div>
+      )
     })
-    console.log({ projects })
 
     return (
       <div>
+        <Helmet title={siteMetadata.title} />
         <div id="home-header" className="container-fluid">
           <SiteNavi
             title={siteMetadata.title}
@@ -53,7 +62,7 @@ class Home extends Component {
         </div>
 
         <SiteNavi title={siteMetadata.title} {...this.props} />
-        <div id="home-about" className="container-fluid bg-odd py-6">
+        <div id="about" className="container-fluid bg-odd py-6">
           <div>
             <div id="about-title" className="row justify-content-center">
               <div className="col-7">
@@ -94,20 +103,20 @@ class Home extends Component {
           </div>
         </div>
 
-        <div id="home-portfolio" className="container-fluid bg-even py-5">
+        <div id="portfolio" className="container-fluid bg-even py-5">
           <div id="portfolio-title" className="row justify-content-center">
             <div className="col-7">
               <p className="text-center display-4">My Portfolio</p>
             </div>
           </div>
           <div id="portfolio-grid" className="row justify-content-center">
-            <div className="col-12">
+            <div className="col-lg-8 col-10">
               <div className="row">{projectLinks}</div>
             </div>
           </div>
         </div>
 
-        <div id="home-contact" className="container-fluid bg-odd py-6">
+        <div id="contact" className="container-fluid bg-odd py-6">
           <div className="row justify-content-center">
             <div className="col-7 text-center display-4">Get In Touch</div>
           </div>
@@ -197,12 +206,12 @@ class Home extends Component {
           </div>
         </div>
 
-        <div id="home-form" className="container-fluid py-5 bg-dark">
+        <div id="enquire" className="container-fluid py-5 bg-dark">
           <div className="row justify-content-center">
             <div className="text-center display-4 text-white">Enquire</div>
           </div>
           <div className="row justify-content-center pt-3">
-            <div className="col-sm-8">
+            <div className="col-sm-7">
               <form>
                 <div className="form-row justify-content-center">
                   <div className="col-6 pb-3">
@@ -281,7 +290,7 @@ export default Home
 export const projectQuery = graphql`
   query ProjectQuery {
     site {
-      siteMetadata {
+      meta: siteMetadata {
         title
         description
         url: siteUrl
@@ -290,17 +299,18 @@ export const projectQuery = graphql`
         adsense
       }
     }
-    remark: allMarkdownRemark {
+    portfolio: allContentfulPhotoGallery(limit: 9) {
+      totalCount
       projects: edges {
         project: node {
           id
-          html
-          frontmatter {
-            layout
+          title {
             title
-            path
-            categories
-            date(formatString: "YYYY/MM/DD")
+          }
+          coverImage {
+            file {
+              url
+            }
           }
         }
       }
