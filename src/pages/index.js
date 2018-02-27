@@ -6,6 +6,7 @@ import Link from 'gatsby-link'
 import { siteMetadata } from '../../gatsby-config'
 
 import SiteNavi from '../components/SiteNavi'
+import PortfolioNavi from '../components/PortfolioNavi'
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
@@ -17,8 +18,6 @@ import faCircle from '@fortawesome/fontawesome-free-regular/faCircle'
 class Home extends Component {
   render() {
     const projectLinks = []
-    const tagLinks = []
-    const tagList = []
     const pathPrefix =
       process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
     const projects = get(this, 'props.data.portfolio.projects')
@@ -27,18 +26,6 @@ class Home extends Component {
       const title = get(data, 'project.title.title')
       const image = get(data, 'project.coverImage.file.url')
       const path = get(data, 'project.id')
-      const tags = get(data, 'project.tags')
-
-      tags.forEach((tag, tagCount) => {
-        if (tagList.indexOf(tag) == -1) {
-          tagList.push(tag)
-          tagLinks.push(
-            <li className="nav-item" key={tagCount}>
-              <Link to="#">{tag}</Link>
-            </li>
-          )
-        }
-      })
 
       projectLinks.push(
         <div className="col-4 pt-5" key={i}>
@@ -124,13 +111,7 @@ class Home extends Component {
               <p className="text-center display-4">My Portfolio</p>
             </div>
           </div>
-          <div className="row justify-content-center">
-            <div className="col-7">
-              <ul className="nav nav-fill justify-content-center text-uppercase">
-                {tagLinks}
-              </ul>
-            </div>
-          </div>
+          <PortfolioNavi projects={this.props.data.portfolio.projects} />
           <div id="portfolio-grid" className="row justify-content-center">
             <div className="col-lg-8 col-10">
               <div className="row">{projectLinks}</div>
