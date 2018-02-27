@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
+import Link from 'gatsby-link'
 
 import { siteMetadata } from '../../gatsby-config'
 
@@ -16,6 +17,8 @@ import faCircle from '@fortawesome/fontawesome-free-regular/faCircle'
 class Home extends Component {
   render() {
     const projectLinks = []
+    const tagLinks = []
+    const tagList = []
     const pathPrefix =
       process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
     const projects = get(this, 'props.data.portfolio.projects')
@@ -24,6 +27,18 @@ class Home extends Component {
       const title = get(data, 'project.title.title')
       const image = get(data, 'project.coverImage.file.url')
       const path = get(data, 'project.id')
+      const tags = get(data, 'project.tags')
+
+      tags.forEach((tag, tagCount) => {
+        if (tagList.indexOf(tag) == -1) {
+          tagList.push(tag)
+          tagLinks.push(
+            <li className="nav-item" key={tagCount}>
+              <Link to="#">{tag}</Link>
+            </li>
+          )
+        }
+      })
 
       projectLinks.push(
         <div className="col-4 pt-5" key={i}>
@@ -107,6 +122,13 @@ class Home extends Component {
           <div id="portfolio-title" className="row justify-content-center">
             <div className="col-7">
               <p className="text-center display-4">My Portfolio</p>
+            </div>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-7">
+              <ul className="nav nav-fill justify-content-center text-uppercase">
+                {tagLinks}
+              </ul>
             </div>
           </div>
           <div id="portfolio-grid" className="row justify-content-center">
@@ -304,6 +326,7 @@ export const projectQuery = graphql`
       projects: edges {
         project: node {
           id
+          tags
           title {
             title
           }
