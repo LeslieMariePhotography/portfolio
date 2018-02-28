@@ -53,7 +53,7 @@ class Home extends Component {
             color="primary"
             {...this.props}
           />
-          <div className="row justify-content-center pt-4 pb-6">
+          <div className="row justify-content-center pt-7 pb-9">
             <div className="col-lg-6 col-9">
               <img
                 src={pathPrefix + '/img/logo_square.svg'}
@@ -111,10 +111,13 @@ class Home extends Component {
               <p className="text-center display-4">My Portfolio</p>
             </div>
           </div>
-          <PortfolioNavi projects={this.props.data.portfolio.projects} />
+          <PortfolioNavi
+            projects={this.props.data.portfolio.projects}
+            {...this.props}
+          />
           <div id="portfolio-grid" className="row justify-content-center">
             <div className="col-lg-8 col-10">
-              <div className="row">{projectLinks}</div>
+              <div className="row justify-content-center">{projectLinks}</div>
             </div>
           </div>
         </div>
@@ -214,7 +217,7 @@ class Home extends Component {
             <div className="text-center display-4 text-white">Enquire</div>
           </div>
           <div className="row justify-content-center pt-3">
-            <div className="col-sm-7">
+            <div className="col-sm-6">
               <form>
                 <div className="form-row justify-content-center">
                   <div className="col-6 pb-3">
@@ -274,6 +277,13 @@ class Home extends Component {
                     />
                   </div>
                 </div>
+                <div className="form-row justify-content-center pb-3">
+                  <textarea
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="3"
+                  />
+                </div>
                 <div className="form-row justify-content-center">
                   <button type="submit" className="btn btn-primary">
                     Submit
@@ -307,6 +317,7 @@ export const projectQuery = graphql`
       projects: edges {
         project: node {
           id
+          categories
           tags
           title {
             title

@@ -4,31 +4,44 @@ import Link from 'gatsby-link'
 
 class PortfolioNavi extends Component {
   render() {
-    const { projects } = this.props
-    const tagList = []
-    const tagLinks = []
+    const { projects, location } = this.props
+    const catList = []
+    const catLinks = []
 
-    console.log(projects)
     projects.forEach((data, projCount) => {
-      const tags = get(data, 'project.tags')
-
-      tags.forEach((tag, tagCount) => {
-        if (tagList.indexOf(tag) == -1) {
-          tagList.push(tag)
-          tagLinks.push(
-            <li className="nav-item" key={tagCount}>
-              <Link to="#">{tag}</Link>
-            </li>
-          )
-        }
-      })
+      const categories = get(data, 'project.categories')
+      const path = get(data, 'project.id')
+      if (categories != null) {
+        categories.forEach((cat, catCount) => {
+          if (catList.indexOf(cat) == -1) {
+            catList.push(cat)
+            catLinks.push(
+              <li
+                className={
+                  location.hash === `#${cat}` ? 'navitem active' : 'nav-item'
+                }
+                key={path + '-' + catCount}
+              >
+                <Link to={`/portfolio/#${cat}`} className="nav-link">
+                  {cat}
+                </Link>
+              </li>
+            )
+          }
+        })
+      }
     })
 
     return (
       <div className="row justify-content-center">
         <div className="col-7">
-          <ul className="nav nav-fill justify-content-center text-uppercase">
-            {tagLinks}
+          <ul className="nav justify-content-center text-uppercase">
+            <li className="nav-item">
+              <Link to="/portfolio/" className="nav-link">
+                All
+              </Link>
+            </li>
+            {catLinks}
           </ul>
         </div>
       </div>

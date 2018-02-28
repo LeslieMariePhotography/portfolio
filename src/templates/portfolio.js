@@ -32,11 +32,6 @@ export const pageQuery = graphql`
     site {
       meta: siteMetadata {
         title
-        description
-        url: siteUrl
-        author
-        twitter
-        adsense
       }
     }
     post: contentfulPhotoGallery(id: { eq: $id }) {
