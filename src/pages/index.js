@@ -40,7 +40,7 @@ class Home extends Component {
       const path = get(data, 'project.id')
 
       projectLinks.push(
-        <div className="col-4 pt-5" key={i}>
+        <div className="col-sm-4 col-12 pt-5" key={i}>
           <div
             className="text-center hovereffect"
             style={{ backgroundImage: `url(https:${image})` }}
@@ -59,12 +59,14 @@ class Home extends Component {
     return (
       <div style={transition && transition.style}>
         <Helmet title={siteMetadata.title} />
-        <div id="home-header" className="container-fluid">
-          <SiteNavi
-            title={siteMetadata.title}
-            color="primary"
-            {...this.props}
-          />
+        <SiteNavi
+          title={siteMetadata.title}
+          color="primary"
+          projects={this.props.data.portfolio.projects}
+          {...this.props}
+        />
+
+        <div id="home" className="container-fluid">
           <div className="row justify-content-center pt-7 pb-9">
             <div className="col-lg-6 col-9">
               <img
@@ -75,16 +77,20 @@ class Home extends Component {
           </div>
         </div>
 
-        <SiteNavi title={siteMetadata.title} {...this.props} />
+        <SiteNavi
+          title={siteMetadata.title}
+          projects={this.props.data.portfolio.projects}
+          {...this.props}
+        />
         <div id="about" className="container-fluid bg-odd py-6">
           <div>
             <div id="about-title" className="row justify-content-center">
-              <div className="col-7">
+              <div className="col-lg-7 col-sm-10 col-12">
                 <p className="text-center display-4">Hello, I'm Leslie Marie</p>
               </div>
             </div>
             <div id="about-text" className="row justify-content-center">
-              <div className="col-7">
+              <div className="col-lg-7 col-sm-10 col-12">
                 <p className="text-center">
                   As a wife, and mother, I understand the importance of
                   capturing life's precious memories. However, it isn't always
@@ -107,7 +113,7 @@ class Home extends Component {
               </div>
             </div>
             <div id="about-signature" className="row justify-content-center">
-              <div className="col-2">
+              <div className="col-lg-2 col-sm-3 col-6">
                 <img
                   src={pathPrefix + '/img/signature.svg'}
                   className="mx-auto d-block"
@@ -119,7 +125,7 @@ class Home extends Component {
 
         <div id="portfolio" className="container-fluid bg-even py-5">
           <div id="portfolio-title" className="row justify-content-center">
-            <div className="col-7">
+            <div className="col-lg-7 col-sm-10 col-11">
               <p className="text-center display-4">My Portfolio</p>
             </div>
           </div>
@@ -128,25 +134,36 @@ class Home extends Component {
             {...this.props}
           />
           <div id="portfolio-grid" className="row justify-content-center">
-            <div className="col-lg-8 col-10">
+            <div className="col-lg-8 col-sm-10 col-12">
               <div className="row justify-content-center">{projectLinks}</div>
             </div>
+          </div>
+          <div className="row justify-content-center pt-3">
+            <a
+              className="btn btn-outline-primary"
+              href={pathPrefix + '/portfolio'}
+              role="button"
+            >
+              More
+            </a>
           </div>
         </div>
 
         <div id="contact" className="container-fluid bg-odd py-6">
           <div className="row justify-content-center">
-            <div className="col-7 text-center display-4">Get In Touch</div>
+            <div className="col-lg-7 col-sm-10 col-12 text-center display-4">
+              Get In Touch
+            </div>
           </div>
           <div className="row justify-content-center pt-3">
-            <div className="col-7 text-center">
+            <div className="col-lg-7 col-sm-10 col-12 text-center">
               I am a local photographer who enjoys the art of capturing memories
               that can be enjoyed for years to come. If you like my style, and
               would like to work together, please contact me!
             </div>
           </div>
           <div id="contact-info" className="row justify-content-center pt-6">
-            <div className="col-md-3 col-7 text-center">
+            <div className="col-sm-3 col-12 text-center">
               <a className="contact-link" href="tel://1-559-972-9013">
                 <div className="row">
                   <div className="col-12 text-primary">
@@ -168,7 +185,7 @@ class Home extends Component {
                 </div>
               </a>
             </div>
-            <div className="col-md-3 col-7 text-center">
+            <div className="col-sm-3 col-12 text-center">
               <a
                 className="contact-link"
                 href="mailto:leslievera2012@gmail.com"
@@ -196,7 +213,7 @@ class Home extends Component {
                 </div>
               </a>
             </div>
-            <div className="col-md-3 col-7 text-center">
+            <div className="col-sm-3 col-12 text-center">
               <a className="contact-link" href="maps:36.3174153,-119.4717621">
                 <div className="row">
                   <div className="col-12 text-primary">
@@ -229,10 +246,10 @@ class Home extends Component {
             <div className="text-center display-4 text-white">Enquire</div>
           </div>
           <div className="row justify-content-center pt-3">
-            <div className="col-sm-6">
+            <div className="col-lg-6 col-sm-10">
               <Form>
                 <FormGroup row>
-                  <Col xs={6}>
+                  <Col s={6} className="pb-2">
                     <Input
                       type="text"
                       name="fName"
@@ -240,11 +257,8 @@ class Home extends Component {
                       placeholder="First Name*"
                       required
                     />
-                    <FormFeedback>
-                      Oh noes! that name is already taken
-                    </FormFeedback>
                   </Col>
-                  <Col xs={6}>
+                  <Col s={6} className="pb-2">
                     <Input
                       type="text"
                       name="lName"
@@ -255,7 +269,7 @@ class Home extends Component {
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Col xs={6}>
+                  <Col s={6} className="pb-2">
                     <Input
                       type="email"
                       name="email"
@@ -264,7 +278,7 @@ class Home extends Component {
                       required
                     />
                   </Col>
-                  <Col xs={6}>
+                  <Col s={6} className="pb-2">
                     <Input
                       type="tel"
                       name="phone"
@@ -274,7 +288,7 @@ class Home extends Component {
                   </Col>
                 </FormGroup>
                 <FormGroup row>
-                  <Col xs={6}>
+                  <Col s={6} className="pb-2">
                     <Input type="select" name="event" id="event" required>
                       <option>Event Type*</option>
                       <option>Wedding/Engagement</option>
@@ -283,7 +297,7 @@ class Home extends Component {
                       <option>Other</option>
                     </Input>
                   </Col>
-                  <Col xs={6}>
+                  <Col s={6} className="pb-2">
                     <Input type="date" name="date" id="date" />
                   </Col>
                 </FormGroup>

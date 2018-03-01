@@ -1,96 +1,128 @@
 import React, { Component } from 'react'
+import get from 'lodash/get'
 import Link from 'gatsby-link'
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from 'reactstrap'
 
 class SiteNavi extends Component {
+  constructor(props) {
+    super(props)
+
+    this.toggle = this.toggle.bind(this)
+    this.state = {
+      isOpen: false,
+    }
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    })
+  }
+
   render() {
-    const { location, title, color } = this.props
+    const { location, title, color, projects } = this.props
+    const catList = []
+    const catLinks = []
+
+    console.log(projects)
+
+    projects.forEach((data, projCount) => {
+      const categories = get(data, 'project.categories')
+      const path = get(data, 'project.id')
+
+      if (categories != null) {
+        categories.forEach((cat, catCount) => {
+          if (catList.indexOf(cat) == -1) {
+            catList.push(cat)
+            catLinks.push(
+              <DropdownItem
+                href={`/portfolio/#${cat}`}
+                active={
+                  location.pathname === '/portfolio/' &&
+                  location.hash === `#${cat}`
+                    ? true
+                    : false
+                }
+                key={path}
+              >
+                {cat}
+              </DropdownItem>
+            )
+          }
+        })
+      }
+    })
 
     return (
-      <nav
-        className={
-          color === 'primary'
-            ? 'navbar navbar-expand-sm text-uppercase navbar-dark bg-faded'
-            : 'navbar sticky-top navbar-expand-sm text-uppercase navbar-light bg-white'
-        }
+      <Navbar
+        className="text-uppercase"
+        color={color === 'primary' ? 'faded' : 'white'}
+        dark={color === 'primary' ? true : false}
+        light={color === 'primary' ? false : true}
+        sticky={color === 'primary' ? '' : 'top'}
+        expand="md"
       >
-        <a
-          className={color === 'primary' ? 'invisible' : 'navbar-brand'}
+        <NavbarBrand
           href="/"
+          className={color === 'primary' ? 'invisible' : 'navbar-brand'}
         >
           <div className="site-title">Leslie Marie</div>
           <div className="site-subtitle">Photography</div>
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-
-        <div
-          className="collapse navbar-collapse justify-content-end"
-          id="navbarSupportedContent"
-        >
-          <ul className="navbar-nav">
-            <li
-              className={
-                location.pathname === '/' ? 'nav-item active' : 'nav-item'
+        </NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem
+              active={
+                location.hash === '#home' ||
+                (location.pathname === '/' && location.hash === '')
+                  ? true
+                  : false
               }
             >
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li
-              className={
-                location.pathname === '/#about' ? 'nav-item active' : 'nav-item'
-              }
-            >
-              <Link to="/#about" className="nav-link">
-                About
-              </Link>
-            </li>
-            <li
-              className={
-                location.pathname === '/#portfolio'
-                  ? 'nav-item active'
-                  : 'nav-item'
-              }
-            >
-              <Link to="/#portfolio" className="nav-link">
+              <NavLink href="/#home">Home</NavLink>
+            </NavItem>
+            <NavItem active={location.hash === '#about' ? true : false}>
+              <NavLink href="/#about">About</NavLink>
+            </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
                 Portfolio
-              </Link>
-            </li>
-            <li
-              className={
-                location.pathname === '/#contact'
-                  ? 'nav-item active'
-                  : 'nav-item'
-              }
-            >
-              <Link to="/#contact" className="nav-link">
-                Contact
-              </Link>
-            </li>
-            <li
-              className={
-                location.pathname === '/#enquire'
-                  ? 'nav-item active'
-                  : 'nav-item'
-              }
-            >
-              <Link to="/#enquire" className="nav-link">
-                Enquire
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem
+                  href={`/portfolio/`}
+                  active={
+                    location.pathname === '/portfolio/' && location.hash === ''
+                      ? true
+                      : false
+                  }
+                >
+                  All
+                </DropdownItem>
+                {catLinks}
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <NavItem active={location.hash === '#contact' ? true : false}>
+              <NavLink href="/#contact">Contact</NavLink>
+            </NavItem>
+            <NavItem active={location.hash === '#enquire' ? true : false}>
+              <NavLink href="/#enquire">Enquire</NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
     )
   }
 }

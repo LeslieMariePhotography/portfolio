@@ -27,8 +27,8 @@ class PortfolioIndex extends Component {
             className={
               categories.indexOf(location.hash.replace('#', '')) > -1 ||
               location.hash === ''
-                ? 'col-4 pt-5'
-                : 'col-4 pt-5 d-none'
+                ? 'col-sm-4 col-12 pt-5'
+                : 'd-none'
             }
             key={path + '-' + i}
           >
@@ -47,9 +47,7 @@ class PortfolioIndex extends Component {
       } else {
         projectLinks.push(
           <div
-            className={
-              location.hash === '' ? 'col-4 pt-5' : 'col-4 pt-5 d-none'
-            }
+            className={location.hash === '' ? 'col-sm-4 col-12 pt-5' : 'd-none'}
             key={path + '-' + i}
           >
             <div
@@ -69,10 +67,14 @@ class PortfolioIndex extends Component {
 
     return (
       <div id="portfolio" style={transition && transition.style}>
-        <SiteNavi title={siteMetadata.title} {...this.props} />
+        <SiteNavi
+          title={siteMetadata.title}
+          projects={this.props.data.portfolio.projects}
+          {...this.props}
+        />
         <div className="container-fluid bg-even py-5">
           <div className="row justify-content-center">
-            <div className="col-7">
+            <div className="col-lg-7 col-sm-10 col-12">
               <p className="text-center display-4">My Portfolio</p>
             </div>
           </div>
@@ -81,7 +83,7 @@ class PortfolioIndex extends Component {
             {...this.props}
           />
           <div id="portfolio-grid" className="row justify-content-center">
-            <div className="col-lg-8 col-10">
+            <div className="col-lg-8 col-sm-10 col-12">
               <div className="row justify-content-center">{projectLinks}</div>
             </div>
           </div>

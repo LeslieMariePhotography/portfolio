@@ -55,7 +55,7 @@ class PortfolioTemplate extends Component {
 
       list.push(
         <div
-          className="col-3 pt-5"
+          className="col-md-4 col-sm-6 col-12 pt-5"
           key={this.props.data.post.id + '-' + imgCount}
         >
           <a
@@ -75,10 +75,14 @@ class PortfolioTemplate extends Component {
     return (
       <div style={transition && transition.style}>
         <Helmet title={`${title} | ${siteTitle}`} />
-        <SiteNavi title={siteMetadata.title} {...this.props} />
+        <SiteNavi
+          title={siteMetadata.title}
+          projects={this.props.data.portfolio.projects}
+          {...this.props}
+        />
         <div id="portfolio" className="container-fluid bg-even py-5">
           <div id="portfolio-title" className="row justify-content-center">
-            <div className="col-7">
+            <div className="col-lg-7 col-sm-10 col-12">
               <p className="text-center display-4">{title}</p>
             </div>
           </div>
@@ -87,7 +91,7 @@ class PortfolioTemplate extends Component {
             {...this.props}
           />
           <div className="row justify-content-center">
-            <div className="col-10">
+            <div className="col-lg-7 col-sm-10 col-12">
               <div className="row justify-content-center">{list}</div>
             </div>
           </div>

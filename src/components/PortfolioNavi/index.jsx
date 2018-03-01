@@ -33,7 +33,7 @@ class PortfolioNavi extends Component {
     })
 
     return (
-      <div className="row justify-content-center">
+      <div className="row justify-content-center d-none d-md-flex">
         <div className="col-7">
           <ul className="nav justify-content-center text-uppercase">
             <li className="nav-item">

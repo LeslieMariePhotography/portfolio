@@ -71,7 +71,7 @@ $container-max-widths: (
 //
 // Settings for the `<body>` element.
 
-$body-bg: $white !default;
+$body-bg: $black !default;
 $body-color: $gray-700 !default;
 $inverse-bg: $gray-900 !default;
 $inverse-color: $gray-600 !default;
@@ -140,7 +140,7 @@ img {
 }
 
 /* HEADER */
-#home-header {
+#home {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)),
     url('/img/self-portrait.jpg');
   background-color: #000000;
