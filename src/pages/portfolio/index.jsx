@@ -8,7 +8,7 @@ import PortfolioNavi from '../../components/PortfolioNavi'
 
 class PortfolioIndex extends Component {
   render() {
-    const { location } = this.props
+    const { location, transition } = this.props
 
     const projectLinks = []
     const pathPrefix =
@@ -68,7 +68,7 @@ class PortfolioIndex extends Component {
     })
 
     return (
-      <div id="portfolio">
+      <div id="portfolio" style={transition && transition.style}>
         <SiteNavi title={siteMetadata.title} {...this.props} />
         <div className="container-fluid bg-even py-5">
           <div className="row justify-content-center">

@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
+import {
+  Button,
+  Col,
+  Form,
+  FormGroup,
+  FormFeedback,
+  Label,
+  Input,
+  FormText,
+} from 'reactstrap'
 
 import { siteMetadata } from '../../gatsby-config'
 
@@ -17,6 +27,8 @@ import faCircle from '@fortawesome/fontawesome-free-regular/faCircle'
 
 class Home extends Component {
   render() {
+    const { transition } = this.props
+
     const projectLinks = []
     const pathPrefix =
       process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
@@ -45,7 +57,7 @@ class Home extends Component {
     })
 
     return (
-      <div>
+      <div style={transition && transition.style}>
         <Helmet title={siteMetadata.title} />
         <div id="home-header" className="container-fluid">
           <SiteNavi
@@ -95,9 +107,9 @@ class Home extends Component {
               </div>
             </div>
             <div id="about-signature" className="row justify-content-center">
-              <div className="col-7">
+              <div className="col-2">
                 <img
-                  src={pathPrefix + '/img/signature.jpg'}
+                  src={pathPrefix + '/img/signature.svg'}
                   className="mx-auto d-block"
                 />
               </div>
@@ -218,78 +230,77 @@ class Home extends Component {
           </div>
           <div className="row justify-content-center pt-3">
             <div className="col-sm-6">
-              <form>
-                <div className="form-row justify-content-center">
-                  <div className="col-6 pb-3">
-                    <input
+              <Form>
+                <FormGroup row>
+                  <Col xs={6}>
+                    <Input
                       type="text"
-                      className="form-control"
-                      id="inputFN"
+                      name="fName"
+                      id="fName"
                       placeholder="First Name*"
                       required
                     />
-                  </div>
-                  <div className="col-6 pb-3">
-                    <input
+                    <FormFeedback>
+                      Oh noes! that name is already taken
+                    </FormFeedback>
+                  </Col>
+                  <Col xs={6}>
+                    <Input
                       type="text"
-                      className="form-control"
-                      id="inputLN"
+                      name="lName"
+                      id="lName"
                       placeholder="Last Name*"
                       required
                     />
-                  </div>
-                </div>
-                <div className="form-row justify-content-center">
-                  <div className="col-6 pb-3">
-                    <input
+                  </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Col xs={6}>
+                    <Input
                       type="email"
-                      className="form-control"
-                      id="inputEmail"
+                      name="email"
+                      id="email"
                       placeholder="Email*"
                       required
                     />
-                  </div>
-                  <div className="col-6 pb-3">
-                    <input
+                  </Col>
+                  <Col xs={6}>
+                    <Input
                       type="tel"
-                      className="form-control"
-                      id="inputTel"
+                      name="phone"
+                      id="phone"
                       placeholder="Phone"
                     />
-                  </div>
-                </div>
-                <div className="form-row justify-content-center">
-                  <div className="col-6 pb-3">
-                    <select className="form-control" defaultValue="Event Type*">
+                  </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Col xs={6}>
+                    <Input type="select" name="event" id="event" required>
                       <option>Event Type*</option>
                       <option>Wedding/Engagement</option>
                       <option>Newborn</option>
-                      <option>Portrait</option>
+                      <option>Porttrait</option>
                       <option>Other</option>
-                    </select>
-                  </div>
-                  <div className="col-6 pb-3">
-                    <input
-                      type="date"
-                      className="form-control"
-                      id="inputDate"
-                      placeholder="Event Date"
+                    </Input>
+                  </Col>
+                  <Col xs={6}>
+                    <Input type="date" name="date" id="date" />
+                  </Col>
+                </FormGroup>
+                <FormGroup row>
+                  <Col xs={12}>
+                    <Input
+                      type="textarea"
+                      name="otherText"
+                      id="otherText"
+                      placeholder="Other info..."
                     />
-                  </div>
-                </div>
-                <div className="form-row justify-content-center pb-3">
-                  <textarea
-                    class="form-control"
-                    id="exampleFormControlTextarea1"
-                    rows="3"
-                  />
-                </div>
-                <div className="form-row justify-content-center">
-                  <button type="submit" className="btn btn-primary">
-                    Submit
-                  </button>
-                </div>
-              </form>
+                  </Col>
+                </FormGroup>
+                <FormGroup className="justify-content-center" row>
+                  <Button color="primary">Submit</Button>
+                </FormGroup>
+              </Form>
             </div>
           </div>
         </div>
