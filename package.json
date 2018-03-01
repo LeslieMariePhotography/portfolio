@@ -37,9 +37,14 @@
     "gatsby-transformer-remark": "^1.7.33",
     "gatsby-transformer-sharp": "^1.6.20",
     "lodash": "^4.17.5",
+    "react": "^16.2.0",
+    "react-bootstrap-modal": "^4.0.0",
+    "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
-    "react-images": "^0.5.17",
     "react-lazyload": "^2.3.0",
+    "react-popper": "^0.8.2",
+    "react-transition-group": "^2.2.1",
+    "reactstrap": "^5.0.0-beta.2",
     "slash": "^1.0.0"
   },
   "devDependencies": {
