@@ -46,18 +46,19 @@ class SiteNavi extends Component {
           if (catList.indexOf(cat) == -1) {
             catList.push(cat)
             catLinks.push(
-              <DropdownItem
-                href={withPrefix(`/portfolio/#${cat}`)}
-                active={
-                  location.pathname === '/portfolio/' &&
-                  location.hash === `#${cat}`
-                    ? true
-                    : false
-                }
-                key={path}
-              >
-                {cat}
-              </DropdownItem>
+              <Link to={withPrefix(`/portfolio/#${cat}`)}>
+                <DropdownItem
+                  active={
+                    location.pathname === '/portfolio/' &&
+                    location.hash === `#${cat}`
+                      ? true
+                      : false
+                  }
+                  key={path}
+                >
+                  {cat}
+                </DropdownItem>
+              </Link>
             )
           }
         })
