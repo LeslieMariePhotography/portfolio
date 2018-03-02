@@ -46,11 +46,11 @@ class Home extends Component {
             style={{ backgroundImage: `url(https:${image})` }}
             key={i}
           >
-            <a href={`/portfolio/${path}`}>
+            <Link to={`/portfolio/${path}`}>
               <div className="overlay">
                 <h2>{title}</h2>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       )
@@ -139,13 +139,13 @@ class Home extends Component {
             </div>
           </div>
           <div className="row justify-content-center pt-3">
-            <a
+            <Link
               className="btn btn-outline-primary"
-              href={withPrefix('/portfolio')}
+              to={withPrefix('/portfolio')}
               role="button"
             >
               More
-            </a>
+            </Link>
           </div>
         </div>
 

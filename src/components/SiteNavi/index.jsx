@@ -104,16 +104,17 @@ class SiteNavi extends Component {
                 Portfolio
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem
-                  href={withPrefix(`/portfolio`)}
-                  active={
-                    location.pathname === '/portfolio' && location.hash === ''
-                      ? true
-                      : false
-                  }
-                >
-                  All
-                </DropdownItem>
+                <Link to={withPrefix(`/portfolio`)}>
+                  <DropdownItem
+                    active={
+                      location.pathname === '/portfolio' && location.hash === ''
+                        ? true
+                        : false
+                    }
+                  >
+                    All
+                  </DropdownItem>
+                </Link>
                 {catLinks}
               </DropdownMenu>
             </UncontrolledDropdown>
