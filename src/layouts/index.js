@@ -7,7 +7,6 @@ import SiteFooter from '../components/SiteFooter'
 import './gatstrap.scss'
 import 'animate.css/animate.css'
 import 'prismjs/themes/prism-okaidia.css'
-import 'devicon/devicon.min.css'
 import 'font-awesome/css/font-awesome.css'
 
 class Template extends Component {
