@@ -3,7 +3,7 @@ module.exports = {
     title: 'Leslie Marie Photography',
     description:
       'Photography portfolio for Leslie Marie Photography using GatsbyJS.',
-    siteUrl: '',
+    siteUrl: `https://www.example.com`,
     author: 'Rey Vera',
     twitter: '',
     adsense: '',
@@ -84,6 +84,9 @@ module.exports = {
         fonts: [`Lato:100,300`, `Roberto Condensed`],
       },
     },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+    },
     'gatsby-plugin-catch-links',
     'gatsby-plugin-netlify',
     'gatsby-plugin-offline',
@@ -91,7 +94,6 @@ module.exports = {
     'gatsby-plugin-react-next',
     'gatsby-plugin-sass',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-sitemap',
     'gatsby-plugin-twitter',
     'gatsby-transformer-sharp',
   ],
