@@ -74,13 +74,15 @@ class SiteNavi extends Component {
         sticky={color === 'primary' ? '' : 'top'}
         expand="md"
       >
-        <NavbarBrand
-          href={withPrefix('/')}
-          className={color === 'primary' ? 'invisible' : 'navbar-brand'}
-        >
-          <div className="site-title">Leslie Marie</div>
-          <div className="site-subtitle">Photography</div>
-        </NavbarBrand>
+        <Link to={withPrefix('/')}>
+          <NavbarBrand
+            href={withPrefix('/')}
+            className={color === 'primary' ? 'invisible' : 'navbar-brand'}
+          >
+            <div className="site-title">Leslie Marie</div>
+            <div className="site-subtitle">Photography</div>
+          </NavbarBrand>
+        </Link>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
