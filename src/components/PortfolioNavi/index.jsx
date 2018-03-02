@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import get from 'lodash/get'
-import Link from 'gatsby-link'
+import Link, { withPrefix } from 'gatsby-link'
 
 class PortfolioNavi extends Component {
   render() {
@@ -22,7 +22,10 @@ class PortfolioNavi extends Component {
                 }
                 key={path + '-' + catCount}
               >
-                <Link to={`/portfolio/#${cat}`} className="nav-link">
+                <Link
+                  to={withPrefix(`/portfolio/#${cat}`)}
+                  className="nav-link"
+                >
                   {cat}
                 </Link>
               </li>
@@ -37,7 +40,7 @@ class PortfolioNavi extends Component {
         <div className="col-7">
           <ul className="nav justify-content-center text-uppercase">
             <li className="nav-item">
-              <Link to="/portfolio/" className="nav-link">
+              <Link to={withPrefix('/portfolio')} className="nav-link">
                 All
               </Link>
             </li>

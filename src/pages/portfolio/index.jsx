@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import get from 'lodash/get'
+import { withPrefix } from 'gatsby-link'
 
 import { siteMetadata } from '../../../gatsby-config'
 
@@ -36,7 +37,7 @@ class PortfolioIndex extends Component {
               className="text-center hovereffect"
               style={{ backgroundImage: `url(https:${image}` }}
             >
-              <a href={`/portfolio/${path}`}>
+              <a href={withPrefix(`/portfolio/${path}`)}>
                 <div className="overlay">
                   <h2>{title}</h2>
                 </div>
@@ -54,7 +55,7 @@ class PortfolioIndex extends Component {
               className="text-center hovereffect"
               style={{ backgroundImage: `url(https:${image}` }}
             >
-              <a href={`/portfolio/${path}`}>
+              <a href={withPrefix(`/portfolio/${path}`)}>
                 <div className="overlay">
                   <h2>{title}</h2>
                 </div>

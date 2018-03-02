@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import get from 'lodash/get'
-import Link from 'gatsby-link'
+import Link, { withPrefix } from 'gatsby-link'
 import {
   Collapse,
   Navbar,
@@ -47,7 +47,7 @@ class SiteNavi extends Component {
             catList.push(cat)
             catLinks.push(
               <DropdownItem
-                href={`/portfolio/#${cat}`}
+                href={withPrefix(`/portfolio/#${cat}`)}
                 active={
                   location.pathname === '/portfolio/' &&
                   location.hash === `#${cat}`
@@ -74,7 +74,7 @@ class SiteNavi extends Component {
         expand="md"
       >
         <NavbarBrand
-          href="/"
+          href={withPrefix('/')}
           className={color === 'primary' ? 'invisible' : 'navbar-brand'}
         >
           <div className="site-title">Leslie Marie</div>
@@ -91,10 +91,10 @@ class SiteNavi extends Component {
                   : false
               }
             >
-              <NavLink href="/#home">Home</NavLink>
+              <NavLink href={withPrefix('/#home')}>Home</NavLink>
             </NavItem>
             <NavItem active={location.hash === '#about' ? true : false}>
-              <NavLink href="/#about">About</NavLink>
+              <NavLink href={withPrefix('/#about')}>About</NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -102,9 +102,9 @@ class SiteNavi extends Component {
               </DropdownToggle>
               <DropdownMenu>
                 <DropdownItem
-                  href={`/portfolio/`}
+                  href={withPrefix(`/portfolio`)}
                   active={
-                    location.pathname === '/portfolio/' && location.hash === ''
+                    location.pathname === '/portfolio' && location.hash === ''
                       ? true
                       : false
                   }
@@ -115,10 +115,10 @@ class SiteNavi extends Component {
               </DropdownMenu>
             </UncontrolledDropdown>
             <NavItem active={location.hash === '#contact' ? true : false}>
-              <NavLink href="/#contact">Contact</NavLink>
+              <NavLink href={withPrefix('/#contact')}>Contact</NavLink>
             </NavItem>
             <NavItem active={location.hash === '#enquire' ? true : false}>
-              <NavLink href="/#enquire">Enquire</NavLink>
+              <NavLink href={withPrefix('/#enquire')}>Enquire</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

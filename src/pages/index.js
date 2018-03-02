@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
+import Link, { withPrefix } from 'gatsby-link'
 import {
   Button,
   Col,
@@ -70,7 +70,7 @@ class Home extends Component {
           <div className="row justify-content-center pt-7 pb-9">
             <div className="col-lg-6 col-9">
               <img
-                src={pathPrefix + '/img/logo_square.svg'}
+                src={withPrefix('/img/logo_square.svg')}
                 className="img-fluid"
               />
             </div>
@@ -115,7 +115,7 @@ class Home extends Component {
             <div id="about-signature" className="row justify-content-center">
               <div className="col-lg-2 col-sm-3 col-6">
                 <img
-                  src={pathPrefix + '/img/signature.svg'}
+                  src={withPrefix('/img/signature.svg')}
                   className="mx-auto d-block"
                 />
               </div>
@@ -141,7 +141,7 @@ class Home extends Component {
           <div className="row justify-content-center pt-3">
             <a
               className="btn btn-outline-primary"
-              href={pathPrefix + '/portfolio'}
+              href={withPrefix('/portfolio')}
               role="button"
             >
               More
