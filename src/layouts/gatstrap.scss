@@ -142,7 +142,7 @@ img {
 /* HEADER */
 #home {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)),
-    url('/img/self-portrait.jpg');
+    url('./img/self-portrait.jpg');
   background-color: #000000;
   background-size: auto 100%;
   background-repeat: no-repeat;
@@ -152,7 +152,7 @@ img {
 #enquire {
   // background: linear-gradient(0deg, rgba(27, 27, 27, 0.94), rgba(27, 27, 27, 0.94)),
   // url('/img/bg_contact.jpg');
-  background-image: url('/img/bg_contact.jpg');
+  background-image: url('./img/bg_contact.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }

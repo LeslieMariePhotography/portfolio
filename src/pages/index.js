@@ -18,6 +18,9 @@ import { siteMetadata } from '../../gatsby-config'
 import SiteNavi from '../components/SiteNavi'
 import PortfolioNavi from '../components/PortfolioNavi'
 
+import logo from '../layouts/img/logo_square.svg'
+import signature from '../layouts/img/signature.svg'
+
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
 import faPhone from '@fortawesome/fontawesome-free-solid/faPhone'
@@ -69,10 +72,7 @@ class Home extends Component {
         <div id="home" className="container-fluid">
           <div className="row justify-content-center pt-7 pb-9">
             <div className="col-lg-6 col-9">
-              <img
-                src={withPrefix('/img/logo_square.svg')}
-                className="img-fluid"
-              />
+              <img src={logo} className="img-fluid" />
             </div>
           </div>
         </div>
@@ -114,10 +114,7 @@ class Home extends Component {
             </div>
             <div id="about-signature" className="row justify-content-center">
               <div className="col-lg-2 col-sm-3 col-6">
-                <img
-                  src={withPrefix('/img/signature.svg')}
-                  className="mx-auto d-block"
-                />
+                <img src={signature} className="mx-auto d-block" />
               </div>
             </div>
           </div>
