@@ -18,6 +18,7 @@ import { siteMetadata } from '../../gatsby-config'
 import SiteNavi from '../components/SiteNavi'
 import PortfolioNavi from '../components/PortfolioNavi'
 
+import selfImage from '../layouts/img/self-portrait.jpg'
 import logo from '../layouts/img/logo_square.svg'
 import signature from '../layouts/img/signature.svg'
 
@@ -33,9 +34,16 @@ class Home extends Component {
     const { transition } = this.props
 
     const projectLinks = []
+    const bgLinks = []
     const pathPrefix =
       process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
     const projects = get(this, 'props.data.portfolio.projects')
+
+    const bgImages = get(this, 'props.data.allImageSharp.edges')
+    bgImages.forEach((data, i) => {
+      bgLinks.push(get(data, 'node.sizes.src'))
+    })
+    console.log(bgLinks[0])
 
     projects.forEach((data, i) => {
       const title = get(data, 'project.title.title')
@@ -69,7 +77,18 @@ class Home extends Component {
           {...this.props}
         />
 
-        <div id="home" className="container-fluid">
+        <div
+          id="home"
+          className="container-fluid"
+          style={{
+            background: `linear-gradient(0deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)), url(${
+              bgLinks[1]
+            })`,
+            backgroundSize: 'auto 100%',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: '-10em',
+          }}
+        >
           <div className="row justify-content-center pt-7 pb-9">
             <div className="col-lg-6 col-9">
               <img src={logo} className="img-fluid" />
@@ -238,7 +257,15 @@ class Home extends Component {
           </div>
         </div>
 
-        <div id="enquire" className="container-fluid py-5 bg-dark">
+        <div
+          id="enquire"
+          className="container-fluid py-5 bg-dark"
+          style={{
+            backgroundImage: `url(${bgLinks[0]})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+          }}
+        >
           <div className="row justify-content-center">
             <div className="text-center display-4 text-white">Enquire</div>
           </div>
@@ -348,6 +375,15 @@ export const projectQuery = graphql`
             file {
               url
             }
+          }
+        }
+      }
+    }
+    allImageSharp {
+      edges {
+        node {
+          sizes {
+            src
           }
         }
       }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 
+import favicon from './layouts/img/favicon.ico'
+
 let stylesStr
 if (process.env.NODE_ENV === 'production') {
   try {
@@ -34,12 +36,7 @@ export default class HTML extends Component {
           />
           {this.props.headComponents}
           {css}
-          <link
-            href="/img/apple-touch-icon.png"
-            rel="apple-touch-icon"
-            sizes="180x180"
-          />
-          <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
+          <link href={favicon} rel="icon" type="image/x-icon" />
         </head>
         <body>
           <div
