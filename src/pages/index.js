@@ -47,7 +47,7 @@ class Home extends Component {
 
     projects.forEach((data, i) => {
       const title = get(data, 'project.title.title')
-      const image = get(data, 'project.coverImage.file.url')
+      const image = get(data, 'project.coverImage.sizes.src')
       const path = get(data, 'project.id')
 
       projectLinks.push(
@@ -372,8 +372,8 @@ export const projectQuery = graphql`
             title
           }
           coverImage {
-            file {
-              url
+            sizes {
+              src
             }
           }
         }
