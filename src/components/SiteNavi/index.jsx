@@ -35,8 +35,6 @@ class SiteNavi extends Component {
     const catList = []
     const catLinks = []
 
-    console.log(projects)
-
     projects.forEach((data, projCount) => {
       const categories = get(data, 'project.categories')
       const path = get(data, 'project.id')
@@ -46,7 +44,10 @@ class SiteNavi extends Component {
           if (catList.indexOf(cat) == -1) {
             catList.push(cat)
             catLinks.push(
-              <Link to={withPrefix(`/portfolio/#${cat}`)}>
+              <Link
+                to={withPrefix(`/portfolio/#${cat}`)}
+                key={`${cat}-${path}`}
+              >
                 <DropdownItem
                   active={
                     location.pathname === '/portfolio/' &&
@@ -74,15 +75,13 @@ class SiteNavi extends Component {
         sticky={color === 'primary' ? '' : 'top'}
         expand="md"
       >
-        <Link to={withPrefix('/')}>
-          <NavbarBrand
-            href={withPrefix('/')}
-            className={color === 'primary' ? 'invisible' : 'navbar-brand'}
-          >
-            <div className="site-title">Leslie Marie</div>
-            <div className="site-subtitle">Photography</div>
-          </NavbarBrand>
-        </Link>
+        <NavbarBrand
+          href={withPrefix('/')}
+          className={color === 'primary' ? 'invisible' : 'navbar-brand'}
+        >
+          <div className="site-title">Leslie Marie</div>
+          <div className="site-subtitle">Photography</div>
+        </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>

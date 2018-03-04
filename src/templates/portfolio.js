@@ -50,7 +50,7 @@ class PortfolioTemplate extends Component {
     )
 
     images.forEach((image, imgCount) => {
-      const imgLink = get(image, 'file.url')
+      const imgLink = get(image, 'sizes.src')
       const imgId = get(image, 'id')
 
       list.push(
@@ -129,8 +129,8 @@ export const pageQuery = graphql`
       }
       images {
         id
-        file {
-          url
+        sizes {
+          src
         }
       }
     }

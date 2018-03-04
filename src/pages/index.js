@@ -43,7 +43,6 @@ class Home extends Component {
     bgImages.forEach((data, i) => {
       bgLinks.push(get(data, 'node.sizes.src'))
     })
-    console.log(bgLinks[0])
 
     projects.forEach((data, i) => {
       const title = get(data, 'project.title.title')
