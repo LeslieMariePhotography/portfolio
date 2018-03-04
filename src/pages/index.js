@@ -356,8 +356,6 @@ export const projectQuery = graphql`
         description
         url: siteUrl
         author
-        twitter
-        adsense
       }
     }
     portfolio: allContentfulPhotoGallery(limit: 9) {

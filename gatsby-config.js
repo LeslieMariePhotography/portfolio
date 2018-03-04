@@ -5,7 +5,6 @@ module.exports = {
       'Photography portfolio for Leslie Marie Photography using GatsbyJS.',
     siteUrl: `https://www.example.com`,
     author: 'Rey Vera',
-    twitter: '',
     adsense: '',
   },
   pathPrefix: '/',
@@ -101,7 +100,6 @@ module.exports = {
     'gatsby-plugin-react-next',
     'gatsby-plugin-sass',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-twitter',
     'gatsby-transformer-sharp',
   ],
 }
