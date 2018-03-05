@@ -367,7 +367,7 @@ export const projectQuery = graphql`
             title
           }
           coverImage {
-            sizes {
+            sizes(maxWidth: 300) {
               ...GatsbyContentfulSizes_noBase64
             }
           }
