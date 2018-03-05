@@ -32,39 +32,39 @@ class SiteNavi extends Component {
 
   render() {
     const { location, title, color, projects } = this.props
-    const catList = []
-    const catLinks = []
+    // const catList = []
+    // const catLinks = []
 
-    projects.forEach((data, projCount) => {
-      const categories = get(data, 'project.categories')
-      const path = get(data, 'project.id')
+    // projects.forEach((data, projCount) => {
+    //   const categories = get(data, 'project.categories')
+    //   const path = get(data, 'project.id')
 
-      if (categories != null) {
-        categories.forEach((cat, catCount) => {
-          if (catList.indexOf(cat) == -1) {
-            catList.push(cat)
-            catLinks.push(
-              <Link
-                to={withPrefix(`/portfolio/#${cat}`)}
-                key={`${cat}-${path}`}
-              >
-                <DropdownItem
-                  active={
-                    location.pathname === '/portfolio/' &&
-                    location.hash === `#${cat}`
-                      ? true
-                      : false
-                  }
-                  key={path}
-                >
-                  {cat}
-                </DropdownItem>
-              </Link>
-            )
-          }
-        })
-      }
-    })
+    //   if (categories != null) {
+    //     categories.forEach((cat, catCount) => {
+    //       if (catList.indexOf(cat) == -1) {
+    //         catList.push(cat)
+    //         catLinks.push(
+    //           <Link
+    //             to={withPrefix(`/portfolio/#${cat}`)}
+    //             key={`${cat}-${path}`}
+    //           >
+    //             <DropdownItem
+    //               active={
+    //                 location.pathname === '/portfolio/' &&
+    //                 location.hash === `#${cat}`
+    //                   ? true
+    //                   : false
+    //               }
+    //               key={path}
+    //             >
+    //               {cat}
+    //             </DropdownItem>
+    //           </Link>
+    //         )
+    //       }
+    //     })
+    //   }
+    // })
 
     return (
       <Navbar
@@ -98,7 +98,7 @@ class SiteNavi extends Component {
             <NavItem active={location.hash === '#about' ? true : false}>
               <NavLink href={withPrefix('/#about')}>About</NavLink>
             </NavItem>
-            <UncontrolledDropdown nav inNavbar>
+            {/* <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Portfolio
               </DropdownToggle>
@@ -116,7 +116,7 @@ class SiteNavi extends Component {
                 </Link>
                 {catLinks}
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown> */}
             <NavItem active={location.hash === '#contact' ? true : false}>
               <NavLink href={withPrefix('/#contact')}>Contact</NavLink>
             </NavItem>
