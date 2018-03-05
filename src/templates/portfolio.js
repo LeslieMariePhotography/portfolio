@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
+import Img from 'gatsby-image'
 import striptags from 'striptags'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
@@ -52,22 +53,16 @@ class PortfolioTemplate extends Component {
     images.forEach((image, imgCount) => {
       const imgLink = get(image, 'sizes.src')
       const imgId = get(image, 'id')
+      const sizes = get(image, 'sizes')
+      console.log(sizes)
 
       list.push(
         <div
           className="col-md-4 col-sm-6 col-12 pt-5"
           key={this.props.data.post.id + '-' + imgCount}
+          onClick={() => this.toggle(imgLink)}
         >
-          <a
-            id={imgId}
-            style={{ cursor: 'pointer' }}
-            onClick={() => this.toggle(imgLink)}
-          >
-            <img
-              src={`https:${imgLink}`}
-              className="img-fluid mx-auto d-block"
-            />
-          </a>
+          <Img sizes={sizes} style={{ cursor: 'pointer' }} />
         </div>
       )
     })
@@ -130,7 +125,7 @@ export const pageQuery = graphql`
       images {
         id
         sizes {
-          src
+          ...GatsbyContentfulSizes_noBase64
         }
       }
     }
