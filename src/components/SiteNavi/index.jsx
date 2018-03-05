@@ -14,7 +14,6 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap'
-import LazyLoad from 'react-lazyload'
 
 class SiteNavi extends Component {
   constructor(props) {
@@ -84,51 +83,48 @@ class SiteNavi extends Component {
           <div className="site-subtitle">Photography</div>
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
-        <LazyLoad once>
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem
-                active={
-                  location.hash === '#home' ||
-                  (location.pathname === '/' && location.hash === '')
-                    ? true
-                    : false
-                }
-              >
-                <NavLink href={withPrefix('/#home')}>Home</NavLink>
-              </NavItem>
-              <NavItem active={location.hash === '#about' ? true : false}>
-                <NavLink href={withPrefix('/#about')}>About</NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Portfolio
-                </DropdownToggle>
-                <DropdownMenu>
-                  <Link to={withPrefix(`/portfolio`)}>
-                    <DropdownItem
-                      active={
-                        location.pathname === '/portfolio' &&
-                        location.hash === ''
-                          ? true
-                          : false
-                      }
-                    >
-                      All
-                    </DropdownItem>
-                  </Link>
-                  {catLinks}
-                </DropdownMenu>
-              </UncontrolledDropdown>
-              <NavItem active={location.hash === '#contact' ? true : false}>
-                <NavLink href={withPrefix('/#contact')}>Contact</NavLink>
-              </NavItem>
-              <NavItem active={location.hash === '#enquire' ? true : false}>
-                <NavLink href={withPrefix('/#enquire')}>Enquire</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </LazyLoad>
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem
+              active={
+                location.hash === '#home' ||
+                (location.pathname === '/' && location.hash === '')
+                  ? true
+                  : false
+              }
+            >
+              <NavLink href={withPrefix('/#home')}>Home</NavLink>
+            </NavItem>
+            <NavItem active={location.hash === '#about' ? true : false}>
+              <NavLink href={withPrefix('/#about')}>About</NavLink>
+            </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Portfolio
+              </DropdownToggle>
+              <DropdownMenu>
+                <Link to={withPrefix(`/portfolio`)}>
+                  <DropdownItem
+                    active={
+                      location.pathname === '/portfolio' && location.hash === ''
+                        ? true
+                        : false
+                    }
+                  >
+                    All
+                  </DropdownItem>
+                </Link>
+                {catLinks}
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <NavItem active={location.hash === '#contact' ? true : false}>
+              <NavLink href={withPrefix('/#contact')}>Contact</NavLink>
+            </NavItem>
+            <NavItem active={location.hash === '#enquire' ? true : false}>
+              <NavLink href={withPrefix('/#enquire')}>Enquire</NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
       </Navbar>
     )
   }

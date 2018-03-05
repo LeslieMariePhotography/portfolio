@@ -13,6 +13,7 @@ import {
   Input,
   FormText,
 } from 'reactstrap'
+import LazyLoad from 'react-lazyload'
 
 import { siteMetadata } from '../../gatsby-config'
 
@@ -67,12 +68,14 @@ class Home extends Component {
     return (
       <div style={transition && transition.style}>
         <Helmet title={siteMetadata.title} />
-        <SiteNavi
-          title={siteMetadata.title}
-          color="primary"
-          projects={this.props.data.portfolio.projects}
-          {...this.props}
-        />
+        <LazyLoad>
+          <SiteNavi
+            title={siteMetadata.title}
+            color="primary"
+            projects={this.props.data.portfolio.projects}
+            {...this.props}
+          />
+        </LazyLoad>
 
         <div
           id="home"
@@ -93,11 +96,13 @@ class Home extends Component {
           </div>
         </div>
 
-        <SiteNavi
-          title={siteMetadata.title}
-          projects={this.props.data.portfolio.projects}
-          {...this.props}
-        />
+        <LazyLoad>
+          <SiteNavi
+            title={siteMetadata.title}
+            projects={this.props.data.portfolio.projects}
+            {...this.props}
+          />
+        </LazyLoad>
         <div id="about" className="container-fluid bg-odd py-6">
           <div>
             <div id="about-title" className="row justify-content-center">
