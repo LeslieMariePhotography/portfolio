@@ -54,7 +54,6 @@ class PortfolioTemplate extends Component {
       const imgLink = get(image, 'sizes.src')
       const imgId = get(image, 'id')
       const sizes = get(image, 'sizes')
-      console.log(sizes)
 
       list.push(
         <div
