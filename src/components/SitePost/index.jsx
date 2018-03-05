@@ -3,7 +3,6 @@ import Link from 'gatsby-link'
 import forEach from 'lodash/forEach'
 import get from 'lodash/get'
 import size from 'lodash/size'
-import Adsense from '../Adsense'
 import ReadNext from '../ReadNext'
 import './style.scss'
 
@@ -56,11 +55,6 @@ class SitePost extends Component {
     const description = this.description(html)
     const cate = get(data, 'lesson.title')
     const isMore = isIndex && !!html.match('<!--more-->')
-    const ad = isIndex ? (
-      ''
-    ) : (
-      <Adsense clientId={site.meta.adsense} slotId="" format="auto" />
-    )
 
     return (
       <div className="container">

@@ -5,7 +5,6 @@ module.exports = {
       'Photography portfolio for Leslie Marie Photography using GatsbyJS.',
     siteUrl: `https://www.example.com`,
     author: 'Rey Vera',
-    adsense: '',
   },
   pathPrefix: '/',
   plugins: [
@@ -76,12 +75,6 @@ module.exports = {
             type: 'image/png',
           },
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: '',
       },
     },
     {
