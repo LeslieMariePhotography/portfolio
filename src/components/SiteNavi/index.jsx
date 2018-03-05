@@ -82,7 +82,8 @@ class SiteNavi extends Component {
           <div className="site-title">Leslie Marie</div>
           <div className="site-subtitle">Photography</div>
         </NavbarBrand>
-        <NavbarToggler onClick={this.toggle} />
+        {/* <NavbarToggler onClick={this.toggle} /> */}
+        <NavbarToggler />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem
