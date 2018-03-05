@@ -45,7 +45,8 @@
     "react-popper": "^0.8.2",
     "react-transition-group": "^2.2.1",
     "reactstrap": "^5.0.0-beta.2",
-    "slash": "^1.0.0"
+    "slash": "^1.0.0",
+    "typeface-lato": "^0.0.54"
   },
   "devDependencies": {
     "animate.css": "^3.6.1",

@@ -6,6 +6,8 @@ import createHistory from 'history/createBrowserHistory'
 
 import getTransitionStyle from './src/utils/getTransitionStyle'
 
+require('typeface-lato')
+
 const timeout = 250
 const historyExitingEventType = `history::exiting`
 

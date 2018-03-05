@@ -85,12 +85,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-fonts',
-      options: {
-        fonts: [`Lato:100,300`, `Roberto Condensed`],
-      },
-    },
-    {
       resolve: `gatsby-plugin-sitemap`,
     },
     'gatsby-plugin-catch-links',
