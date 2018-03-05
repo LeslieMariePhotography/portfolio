@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import get from 'lodash/get'
 import Link, { withPrefix } from 'gatsby-link'
-
+import Img from 'gatsby-image'
 import { siteMetadata } from '../../../gatsby-config'
 
 import SiteNavi from '../../components/SiteNavi'
@@ -18,9 +18,11 @@ class PortfolioIndex extends Component {
 
     projects.forEach((data, i) => {
       const title = get(data, 'project.title.title')
-      const image = get(data, 'project.coverImage.file.url')
+      const image = get(data, 'project.coverImage.sizes')
       const path = get(data, 'project.id')
       const categories = get(data, 'project.categories')
+
+      console.log(image)
 
       if (categories != null) {
         projectLinks.push(
@@ -33,11 +35,9 @@ class PortfolioIndex extends Component {
             }
             key={path + '-' + i}
           >
-            <div
-              className="text-center hovereffect"
-              style={{ backgroundImage: `url(https:${image}` }}
-            >
+            <div className="text-center hovereffect">
               <Link to={withPrefix(`/portfolio/${path}`)}>
+                <Img sizes={image} />
                 <div className="overlay">
                   <h2>{title}</h2>
                 </div>
@@ -51,11 +51,9 @@ class PortfolioIndex extends Component {
             className={location.hash === '' ? 'col-sm-4 col-12 pt-5' : 'd-none'}
             key={path + '-' + i}
           >
-            <div
-              className="text-center hovereffect"
-              style={{ backgroundImage: `url(https:${image}` }}
-            >
+            <div className="text-center hovereffect">
               <Link to={withPrefix(`/portfolio/${path}`)}>
+                <Img sizes={image} />
                 <div className="overlay">
                   <h2>{title}</h2>
                 </div>
@@ -114,8 +112,8 @@ export const pageQuery = graphql`
             title
           }
           coverImage {
-            file {
-              url
+            sizes {
+              ...GatsbyContentfulSizes_noBase64
             }
           }
         }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
+import Img from 'gatsby-image'
 import Link, { withPrefix } from 'gatsby-link'
 import {
   Button,
@@ -46,17 +47,14 @@ class Home extends Component {
 
     projects.forEach((data, i) => {
       const title = get(data, 'project.title.title')
-      const image = get(data, 'project.coverImage.sizes.src')
+      const image = get(data, 'project.coverImage.sizes')
       const path = get(data, 'project.id')
 
       projectLinks.push(
         <div className="col-sm-4 col-12 pt-5" key={i}>
-          <div
-            className="text-center hovereffect"
-            style={{ backgroundImage: `url(https:${image})` }}
-            key={i}
-          >
+          <div className="text-center hovereffect" key={i}>
             <Link to={`/portfolio/${path}`}>
+              <Img sizes={image} />
               <div className="overlay">
                 <h2>{title}</h2>
               </div>
@@ -370,7 +368,7 @@ export const projectQuery = graphql`
           }
           coverImage {
             sizes {
-              src
+              ...GatsbyContentfulSizes_noBase64
             }
           }
         }
