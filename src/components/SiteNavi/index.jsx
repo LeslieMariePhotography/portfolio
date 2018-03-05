@@ -16,19 +16,19 @@ import {
 } from 'reactstrap'
 
 class SiteNavi extends Component {
-  constructor(props) {
-    super(props)
+  // constructor(props) {
+  //   super(props)
 
-    this.toggle = this.toggle.bind(this)
-    this.state = {
-      isOpen: false,
-    }
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    })
-  }
+  //   this.toggle = this.toggle.bind(this)
+  //   this.state = {
+  //     isOpen: false,
+  //   }
+  // }
+  // toggle() {
+  //   this.setState({
+  //     isOpen: !this.state.isOpen,
+  //   })
+  // }
 
   render() {
     const { location, title, color, projects } = this.props
@@ -84,7 +84,8 @@ class SiteNavi extends Component {
         </NavbarBrand>
         {/* <NavbarToggler onClick={this.toggle} /> */}
         <NavbarToggler />
-        <Collapse isOpen={this.state.isOpen} navbar>
+        {/* <Collapse isOpen={this.state.isOpen} navbar> */}
+        <Collapse navbar>
           <Nav className="ml-auto" navbar>
             <NavItem
               active={
