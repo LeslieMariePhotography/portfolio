@@ -65,11 +65,11 @@ class Home extends Component {
             backgroundPosition: '-10em',
           }}
         >
-          {/* <div className="row justify-content-center pt-7 pb-9">
+          <div className="row justify-content-center pt-7 pb-9">
             <div className="col-lg-6 col-9">
               <img src={logo} className="img-fluid" />
             </div>
-          </div> */}
+          </div>
         </div>
 
         {/* <SiteNavi
