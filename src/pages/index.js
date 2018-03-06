@@ -13,6 +13,7 @@ import {
   Input,
   FormText,
 } from 'reactstrap'
+import LazyLoad from 'react-lazyload'
 
 import { siteMetadata } from '../../gatsby-config'
 
@@ -51,16 +52,18 @@ class Home extends Component {
       const path = get(data, 'project.id')
 
       projectLinks.push(
-        <div className="col-sm-4 col-12 pt-5" key={i}>
-          <div className="text-center hovereffect" key={i}>
-            <Link to={`/portfolio/${path}`}>
-              <Img sizes={image} />
-              <div className="overlay">
-                <h2>{title}</h2>
-              </div>
-            </Link>
+        <LazyLoad once>
+          <div className="col-sm-4 col-12 pt-5" key={i}>
+            <div className="text-center hovereffect" key={i}>
+              <Link to={`/portfolio/${path}`}>
+                <Img sizes={image} />
+                <div className="overlay">
+                  <h2>{title}</h2>
+                </div>
+              </Link>
+            </div>
           </div>
-        </div>
+        </LazyLoad>
       )
     })
 
