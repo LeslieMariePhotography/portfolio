@@ -115,9 +115,9 @@ class Home extends Component {
           </div>
         </div>
 
-        {/* <Portfolio projects={projects} {...this.props}/> */}
+        <Portfolio projects={projects} {...this.props} />
 
-        {/* <div id="contact" className="container-fluid bg-odd py-6">
+        <div id="contact" className="container-fluid bg-odd py-6">
           <div className="row justify-content-center">
             <div className="col-lg-7 col-sm-10 col-12 text-center display-4">
               Get In Touch
@@ -207,9 +207,9 @@ class Home extends Component {
               </a>
             </div>
           </div>
-        </div> */}
+        </div>
 
-        {/* <div
+        <div
           id="enquire"
           className="container-fluid py-5 bg-dark"
           style={{
@@ -293,7 +293,7 @@ class Home extends Component {
               </Form>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     )
   }
