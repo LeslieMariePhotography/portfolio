@@ -77,7 +77,7 @@ class Home extends Component {
           projects={this.props.data.portfolio.projects}
           {...this.props}
         />
-        {/* <div id="about" className="container-fluid bg-odd py-6">
+        <div id="about" className="container-fluid bg-odd py-6">
           <div>
             <div id="about-title" className="row justify-content-center">
               <div className="col-lg-7 col-sm-10 col-12">
@@ -113,7 +113,7 @@ class Home extends Component {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
 
         {/* <Portfolio projects={projects} {...this.props}/> */}
 
