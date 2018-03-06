@@ -18,24 +18,21 @@ import LazyLoad from 'react-lazyload'
 import { siteMetadata } from '../../gatsby-config'
 
 import SiteNavi from '../components/SiteNavi'
-import PortfolioNavi from '../components/PortfolioNavi'
+import Portfolio from '../components/Portfolio'
 
 import selfImage from '../layouts/img/self-portrait.jpg'
 import logo from '../layouts/img/logo_square.svg'
 import signature from '../layouts/img/signature.svg'
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee'
 import faPhone from '@fortawesome/fontawesome-free-solid/faPhone'
 import faLocation from '@fortawesome/fontawesome-free-solid/faLocationArrow'
 import faEnvelope from '@fortawesome/fontawesome-free-regular/faEnvelope'
-import faCircle from '@fortawesome/fontawesome-free-regular/faCircle'
 
 class Home extends Component {
   render() {
     const { transition } = this.props
 
-    const projectLinks = []
     const bgLinks = []
     const pathPrefix =
       process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
@@ -44,27 +41,6 @@ class Home extends Component {
     const bgImages = get(this, 'props.data.allImageSharp.edges')
     bgImages.forEach((data, i) => {
       bgLinks.push(get(data, 'node.sizes.src'))
-    })
-
-    projects.forEach((data, i) => {
-      const title = get(data, 'project.title.title')
-      const image = get(data, 'project.coverImage.sizes')
-      const path = get(data, 'project.id')
-
-      projectLinks.push(
-        <LazyLoad once>
-          <div className="col-sm-4 col-12 pt-5" key={i}>
-            <div className="text-center hovereffect" key={i}>
-              <Link to={`/portfolio/${path}`}>
-                <Img sizes={image} />
-                <div className="overlay">
-                  <h2>{title}</h2>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </LazyLoad>
-      )
     })
 
     return (
@@ -77,7 +53,7 @@ class Home extends Component {
           {...this.props}
         />
 
-        <div
+        {/* <div
           id="home"
           className="container-fluid"
           style={{
@@ -139,31 +115,7 @@ class Home extends Component {
           </div>
         </div>
 
-        <div id="portfolio" className="container-fluid bg-even py-5">
-          <div id="portfolio-title" className="row justify-content-center">
-            <div className="col-lg-7 col-sm-10 col-11">
-              <p className="text-center display-4">My Portfolio</p>
-            </div>
-          </div>
-          <PortfolioNavi
-            projects={this.props.data.portfolio.projects}
-            {...this.props}
-          />
-          <div id="portfolio-grid" className="row justify-content-center">
-            <div className="col-lg-8 col-sm-10 col-12">
-              <div className="row justify-content-center">{projectLinks}</div>
-            </div>
-          </div>
-          <div className="row justify-content-center pt-3">
-            <Link
-              className="btn btn-outline-primary"
-              to={withPrefix('/portfolio')}
-              role="button"
-            >
-              More
-            </Link>
-          </div>
-        </div>
+        <Portfolio projects={projects} {...this.props}/>
 
         <div id="contact" className="container-fluid bg-odd py-6">
           <div className="row justify-content-center">
@@ -341,7 +293,7 @@ class Home extends Component {
               </Form>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     )
   }

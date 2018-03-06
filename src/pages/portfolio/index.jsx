@@ -5,88 +5,16 @@ import Img from 'gatsby-image'
 import { siteMetadata } from '../../../gatsby-config'
 
 import SiteNavi from '../../components/SiteNavi'
-import PortfolioNavi from '../../components/PortfolioNavi'
+import Portfolio from '../../components/Portfolio'
 
 class PortfolioIndex extends Component {
   render() {
     const { location, transition } = this.props
-
-    const projectLinks = []
-    const pathPrefix =
-      process.env.NODE_ENV === 'development' ? '' : __PATH_PREFIX__
     const projects = get(this, 'props.data.portfolio.projects')
-
-    projects.forEach((data, i) => {
-      const title = get(data, 'project.title.title')
-      const image = get(data, 'project.coverImage.sizes')
-      const path = get(data, 'project.id')
-      const categories = get(data, 'project.categories')
-
-      console.log(image)
-
-      if (categories != null) {
-        projectLinks.push(
-          <div
-            className={
-              categories.indexOf(location.hash.replace('#', '')) > -1 ||
-              location.hash === ''
-                ? 'col-sm-4 col-12 pt-5'
-                : 'd-none'
-            }
-            key={path + '-' + i}
-          >
-            <div className="text-center hovereffect">
-              <Link to={withPrefix(`/portfolio/${path}`)}>
-                <Img sizes={image} />
-                <div className="overlay">
-                  <h2>{title}</h2>
-                </div>
-              </Link>
-            </div>
-          </div>
-        )
-      } else {
-        projectLinks.push(
-          <div
-            className={location.hash === '' ? 'col-sm-4 col-12 pt-5' : 'd-none'}
-            key={path + '-' + i}
-          >
-            <div className="text-center hovereffect">
-              <Link to={withPrefix(`/portfolio/${path}`)}>
-                <Img sizes={image} />
-                <div className="overlay">
-                  <h2>{title}</h2>
-                </div>
-              </Link>
-            </div>
-          </div>
-        )
-      }
-    })
 
     return (
       <div id="portfolio" style={transition && transition.style}>
-        <SiteNavi
-          title={siteMetadata.title}
-          projects={this.props.data.portfolio.projects}
-          {...this.props}
-        />
-        <div className="container-fluid bg-even py-5">
-          <div className="row justify-content-center">
-            <div className="col-lg-7 col-sm-10 col-12">
-              <p className="text-center display-4">My Portfolio</p>
-            </div>
-          </div>
-          <PortfolioNavi
-            projects={this.props.data.portfolio.projects}
-            {...this.props}
-          />
-          <div id="portfolio-grid" className="row justify-content-center">
-            <div className="col-lg-8 col-sm-10 col-12">
-              <div className="row justify-content-center">{projectLinks}</div>
-            </div>
-          </div>
-        </div>
+        <Portfolio projects={projects} {...this.props} />
       </div>
     )
   }
