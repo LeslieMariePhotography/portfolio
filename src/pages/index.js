@@ -72,11 +72,11 @@ class Home extends Component {
           </div>
         </div>
 
-        {/* <SiteNavi
+        <SiteNavi
           title={siteMetadata.title}
           projects={this.props.data.portfolio.projects}
           {...this.props}
-        /> */}
+        />
         {/* <div id="about" className="container-fluid bg-odd py-6">
           <div>
             <div id="about-title" className="row justify-content-center">
