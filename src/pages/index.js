@@ -53,7 +53,7 @@ class Home extends Component {
           {...this.props}
         />
 
-        {/* <div
+        <div
           id="home"
           className="container-fluid"
           style={{
@@ -65,19 +65,19 @@ class Home extends Component {
             backgroundPosition: '-10em',
           }}
         >
-          <div className="row justify-content-center pt-7 pb-9">
+          {/* <div className="row justify-content-center pt-7 pb-9">
             <div className="col-lg-6 col-9">
               <img src={logo} className="img-fluid" />
             </div>
-          </div>
+          </div> */}
         </div>
 
-        <SiteNavi
+        {/* <SiteNavi
           title={siteMetadata.title}
           projects={this.props.data.portfolio.projects}
           {...this.props}
-        />
-        <div id="about" className="container-fluid bg-odd py-6">
+        /> */}
+        {/* <div id="about" className="container-fluid bg-odd py-6">
           <div>
             <div id="about-title" className="row justify-content-center">
               <div className="col-lg-7 col-sm-10 col-12">
@@ -113,11 +113,11 @@ class Home extends Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <Portfolio projects={projects} {...this.props}/>
+        {/* <Portfolio projects={projects} {...this.props}/> */}
 
-        <div id="contact" className="container-fluid bg-odd py-6">
+        {/* <div id="contact" className="container-fluid bg-odd py-6">
           <div className="row justify-content-center">
             <div className="col-lg-7 col-sm-10 col-12 text-center display-4">
               Get In Touch
@@ -207,9 +207,9 @@ class Home extends Component {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div
+        {/* <div
           id="enquire"
           className="container-fluid py-5 bg-dark"
           style={{
