@@ -14,6 +14,11 @@ class PortfolioIndex extends Component {
 
     return (
       <div id="portfolio" style={transition && transition.style}>
+        <SiteNavi
+          title={siteMetadata.title}
+          projects={this.props.data.portfolio.projects}
+          {...this.props}
+        />
         <Portfolio projects={projects} {...this.props} />
       </div>
     )
