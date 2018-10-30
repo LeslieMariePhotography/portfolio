@@ -80,15 +80,6 @@ class Portfolio extends Component {
             <div className="row justify-content-center">{projectLinks}</div>
           </div>
         </div>
-        <div className="row justify-content-center pt-3">
-          <Link
-            className="btn btn-outline-primary"
-            to={withPrefix('/portfolio')}
-            role="button"
-          >
-            More
-          </Link>
-        </div>
       </div>
     )
   }
