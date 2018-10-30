@@ -78,6 +78,7 @@ class Home extends Component {
           projects={this.props.data.portfolio.projects}
           {...this.props}
         />
+        
         <div id="about" className="container-fluid bg-odd py-6">
           <div>
             <div id="about-title" className="row justify-content-center">
@@ -116,28 +117,6 @@ class Home extends Component {
           </div>
         </div>
 
-        {/* <div id="portfolio" className="container-fluid bg-even py-5">
-          <div id="portfolio-title" className="row justify-content-center">
-            <div className="col-lg-7 col-sm-10 col-11">
-              <p className="text-center display-4">My Portfolio</p>
-            </div>
-          </div>
-          <PortfolioNavi projects={projects} {...this.props} />
-          <div id="portfolio-grid" className="row justify-content-center">
-            <div className="col-lg-8 col-sm-10 col-12">
-              <Instagram />
-            </div>
-          </div>
-          <div className="row justify-content-center pt-3">
-            <Link
-              className="btn btn-outline-primary"
-              to={withPrefix('/portfolio')}
-              role="button"
-            >
-              More
-            </Link>
-          </div>
-        </div> */}
         <Portfolio projects={projects} {...this.props} />
 
         <div id="contact" className="container-fluid bg-odd py-6">
