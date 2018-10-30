@@ -139,14 +139,14 @@ img {
 .navbar-nav,
 #portfolio .nav li {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: smaller;
+  font-size: medium;
 }
 #portfolio .nav {
   li a {
     color: rgba(0, 0, 0, 0.5);
   }
   li.active a {
-    color: rgba(0, 0, 0, 0.9);
+    color:$primary;
   }
 }
 

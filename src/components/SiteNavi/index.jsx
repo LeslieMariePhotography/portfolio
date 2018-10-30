@@ -37,33 +37,26 @@ class SiteNavi extends Component {
 
     projects.forEach((data, projCount) => {
       const categories = get(data, 'project.categories')
+      const title = get(data, 'project.title.title')
       const path = get(data, 'project.id')
 
-      if (categories != null) {
-        categories.forEach((cat, catCount) => {
-          if (catList.indexOf(cat) == -1) {
-            catList.push(cat)
-            catLinks.push(
-              <Link
-                to={withPrefix(`/portfolio/#${cat}`)}
-                key={`${cat}-${path}`}
-              >
-                <DropdownItem
-                  active={
-                    location.pathname === '/portfolio/' &&
-                    location.hash === `#${cat}`
-                      ? true
-                      : false
-                  }
-                  key={path}
-                >
-                  {cat}
-                </DropdownItem>
-              </Link>
-            )
-          }
-        })
-      }
+      catLinks.push(
+        <Link
+          to={withPrefix(`/portfolio/${title}`)}
+          key={`${title}-${path}`}
+        >
+          <DropdownItem
+            active={
+              location.pathname === `/portfolio/${title}`
+                ? true
+                : false
+            }
+            key={path}
+          >
+            {title}
+          </DropdownItem>
+        </Link>
+      )
     })
 
     return (
@@ -103,17 +96,6 @@ class SiteNavi extends Component {
                 Portfolio
               </DropdownToggle>
               <DropdownMenu>
-                <Link to={withPrefix(`/portfolio`)}>
-                  <DropdownItem
-                    active={
-                      location.pathname === '/portfolio' && location.hash === ''
-                        ? true
-                        : false
-                    }
-                  >
-                    All
-                  </DropdownItem>
-                </Link>
                 {catLinks}
               </DropdownMenu>
             </UncontrolledDropdown>

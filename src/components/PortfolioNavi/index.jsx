@@ -15,7 +15,7 @@ class PortfolioNavi extends Component {
       catLinks.push(
         <li
           className={
-            location.hash === `#${title}` ? 'navitem active' : 'nav-item'
+            location.pathname === `/portfolio/${title}` ? 'navitem active' : 'nav-item'
           }
           key={path + '-' + title}
         >
