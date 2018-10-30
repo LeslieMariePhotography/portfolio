@@ -15,7 +15,7 @@ class SiteFooter extends Component {
               </a>
             </div>
             <div className="col-auto px-4">
-              <a className="text-white" href="#">
+              <a className="text-white" href="https://www.instagram.com/lesliemarie_photography/?hl=en">
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
             </div>
