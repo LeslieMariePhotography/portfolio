@@ -28,12 +28,12 @@ class Portfolio extends Component {
                 categories.indexOf(location.hash.replace('#', '')) > -1 ||
                 location.hash === '' ||
                 location.pathname === '/'
-                  ? 'col-sm-4 col-12 pt-5'
+                  ? 'col-sm-3 col-12 pt-5'
                   : 'd-none'
               }
             >
               <div className="text-center hovereffect">
-                <Link to={withPrefix(`/portfolio/${path}`)}>
+                <Link to={withPrefix(`/portfolio/${title}`)}>
                   <Img sizes={image} />
                   <div className="overlay">
                     <h2>{title}</h2>
@@ -49,12 +49,12 @@ class Portfolio extends Component {
             <div
               className={
                 location.hash === '' || location.pathname === '/'
-                  ? 'col-sm-4 col-12 pt-5'
+                  ? 'col-sm-3 col-12 pt-5'
                   : 'd-none'
               }
             >
               <div className="text-center hovereffect">
-                <Link to={withPrefix(`/portfolio/${path}`)}>
+                <Link to={withPrefix(`/portfolio/${title}`)}>
                   <Img sizes={image} />
                   <div className="overlay">
                     <h2>{title}</h2>

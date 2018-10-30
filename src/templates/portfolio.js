@@ -5,6 +5,7 @@ import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import striptags from 'striptags'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import Gallery from 'react-photo-gallery';
 
 import { siteMetadata } from '../../gatsby-config'
 
@@ -33,6 +34,8 @@ class PortfolioTemplate extends Component {
     const { transition } = this.props
 
     const list = []
+    const PHOTO_SET = []
+    const imgSrc = []
     const post = get(this, 'props.data.post')
     const site = get(this, 'props.data.site')
     const title = get(post, 'title.title')
@@ -54,16 +57,26 @@ class PortfolioTemplate extends Component {
       const imgLink = get(image, 'sizes.src')
       const imgId = get(image, 'id')
       const sizes = get(image, 'sizes')
+      const width = get(image, 'file.details.image.width')
+      const height = get(image, 'file.details.image.height')
 
-      list.push(
-        <div
-          className="col-md-4 col-sm-6 col-12 pt-5"
-          key={this.props.data.post.id + '-' + imgCount}
-          onClick={() => this.toggle(imgLink)}
-        >
-          <Img sizes={sizes} style={{ cursor: 'pointer' }} />
-        </div>
+      PHOTO_SET.push(
+        {
+          src: `http:${imgLink}`,
+          width: width,
+          height: height
+        }
       )
+
+      // list.push(
+      //   <div
+      //     className="col-md-4 col-sm-6 col-12 pt-5"
+      //     key={this.props.data.post.id + '-' + imgCount}
+      //     onClick={() => this.toggle(imgLink)}
+      //   >
+      //     <Img sizes={sizes} style={{ cursor: 'pointer' }} />
+      //   </div>
+      // )
     })
 
     return (
@@ -84,11 +97,18 @@ class PortfolioTemplate extends Component {
             projects={this.props.data.portfolio.projects}
             {...this.props}
           />
+
           <div className="row justify-content-center">
+            <div className="col-lg-7 col-sm-10 col-12">
+              <Gallery photos={PHOTO_SET} />
+            </div>
+          </div>
+
+          {/* <div className="row justify-content-center">
             <div className="col-lg-7 col-sm-10 col-12">
               <div className="row justify-content-center">{list}</div>
             </div>
-          </div>
+          </div> */}
           <Modal
             isOpen={this.state.modal}
             toggle={this.toggle}
@@ -123,6 +143,14 @@ export const pageQuery = graphql`
       }
       images {
         id
+        file {
+          details {
+            image {
+              width
+              height
+            }
+          }
+        }
         sizes {
           ...GatsbyContentfulSizes_noBase64
         }

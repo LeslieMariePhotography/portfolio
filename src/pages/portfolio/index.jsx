@@ -45,7 +45,7 @@ export const pageQuery = graphql`
             title
           }
           coverImage {
-            sizes(maxWidth: 300) {
+            sizes(maxWidth: 1200, maxHeight: 1200) {
               ...GatsbyContentfulSizes_noBase64
             }
           }

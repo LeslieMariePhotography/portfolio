@@ -21,6 +21,9 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               edges {
                 node {
                   id
+                  title {
+                    title
+                  }
                 }
               }
             }
@@ -35,7 +38,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         // Create portfolio pages
         _.each(result.data.allContentfulPhotoGallery.edges, edge => {
           createPage({
-            path: `/portfolio/${edge.node.id}`,
+            path: `/portfolio/${edge.node.title.title}`,
             component: slash(portfolio),
             context: {
               id: edge.node.id,

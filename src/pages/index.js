@@ -17,8 +17,9 @@ import LazyLoad from 'react-lazyload'
 
 import { siteMetadata } from '../../gatsby-config'
 
-import SiteNavi from '../components/SiteNavi'
 import Portfolio from '../components/Portfolio'
+import PortfolioNavi from '../components/PortfolioNavi'
+import SiteNavi from '../components/SiteNavi'
 
 import selfImage from '../layouts/img/self-portrait.jpg'
 import logo from '../layouts/img/logo_square.svg'
@@ -115,6 +116,28 @@ class Home extends Component {
           </div>
         </div>
 
+        {/* <div id="portfolio" className="container-fluid bg-even py-5">
+          <div id="portfolio-title" className="row justify-content-center">
+            <div className="col-lg-7 col-sm-10 col-11">
+              <p className="text-center display-4">My Portfolio</p>
+            </div>
+          </div>
+          <PortfolioNavi projects={projects} {...this.props} />
+          <div id="portfolio-grid" className="row justify-content-center">
+            <div className="col-lg-8 col-sm-10 col-12">
+              <Instagram />
+            </div>
+          </div>
+          <div className="row justify-content-center pt-3">
+            <Link
+              className="btn btn-outline-primary"
+              to={withPrefix('/portfolio')}
+              role="button"
+            >
+              More
+            </Link>
+          </div>
+        </div> */}
         <Portfolio projects={projects} {...this.props} />
 
         <div id="contact" className="container-fluid bg-odd py-6">
@@ -211,15 +234,15 @@ class Home extends Component {
 
         <div
           id="enquire"
-          className="container-fluid py-5 bg-dark"
-          style={{
-            backgroundImage: `url(${bgLinks[0]})`,
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-          }}
+          className="container-fluid py-5 bg-even"
+          // style={{
+          //   backgroundImage: `url(${bgLinks[0]})`,
+          //   backgroundSize: 'cover',
+          //   backgroundRepeat: 'no-repeat',
+          // }}
         >
           <div className="row justify-content-center">
-            <div className="text-center display-4 text-white">Enquire</div>
+            <div className="text-center display-4">Enquire</div>
           </div>
           <div className="row justify-content-center pt-3">
             <div className="col-lg-6 col-sm-10">
@@ -322,7 +345,7 @@ export const projectQuery = graphql`
             title
           }
           coverImage {
-            sizes(maxWidth: 300) {
+            sizes(maxWidth: 1200, maxHeight: 1200) {
               ...GatsbyContentfulSizes_noBase64
             }
           }
