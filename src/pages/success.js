@@ -19,7 +19,7 @@ class Success extends Component {
           <meta name="description" content="Success Page" />
       </Helmet>
       <SiteNavi title={siteMetadata.title}
-                color="primary"
+                // color="primary"
                 projects={projects}
                 // handleCartOpen={this.handleCartOpen}
                 {...this.props}/>

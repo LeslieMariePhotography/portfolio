@@ -225,7 +225,7 @@ class Home extends Component {
           </div>
           <div className="row justify-content-center pt-3">
             <div className="col-lg-6 col-sm-10">
-              <Form name="contact" method="POST" action="/success" data-netlify="true" data-netlify-honeypot="bot-field">
+              <Form name="contact" method="POST" action="#" data-netlify="true" data-netlify-honeypot="bot-field">
                 <input type="hidden" name="bot-field" />
                 <FormGroup row>
                   <Col s={6} className="pb-2">
