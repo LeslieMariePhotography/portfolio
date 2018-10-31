@@ -304,8 +304,8 @@ class Home extends Component {
 
 export default Home
 
-export const projectQuery = graphql`
-  query ProjectQuery {
+export const homeQuery = graphql`
+  query HomeQuery {
     site {
       meta: siteMetadata {
         title

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Helmet from 'react-helmet'
+import get from 'lodash/get'
 
 import SiteNavi from '../components/SiteNavi'
 
@@ -9,6 +10,8 @@ import { siteMetadata } from '../../gatsby-config'
 
 class Success extends Component {
   render() {
+    const projects = get(this, 'props.data.portfolio.projects')
+
     return (
       <div>
       <Helmet>
@@ -17,7 +20,7 @@ class Success extends Component {
       </Helmet>
       <SiteNavi title={siteMetadata.title}
                 color="primary"
-                // projects={projects}
+                projects={projects}
                 // handleCartOpen={this.handleCartOpen}
                 {...this.props}/>
 
@@ -39,3 +42,40 @@ class Success extends Component {
 }
 
 export default Success
+
+export const successQuery = graphql`
+  query SuccessQuery {
+    site {
+      meta: siteMetadata {
+        title
+      }
+    }
+    portfolio: allContentfulPhotoGallery(limit: 9) {
+      totalCount
+      projects: edges {
+        project: node {
+          id
+          categories
+          tags
+          title {
+            title
+          }
+          coverImage {
+            sizes(maxWidth: 1200, maxHeight: 1200) {
+              ...GatsbyContentfulSizes_noBase64
+            }
+          }
+        }
+      }
+    }
+    allImageSharp {
+      edges {
+        node {
+          sizes {
+            src
+          }
+        }
+      }
+    }
+  }
+`
